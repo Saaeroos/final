@@ -13,9 +13,10 @@ class Admin_c extends CI_Controller{
   }
 
   public function ngos(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_ngo();
-    $data = array('data' => $result);
+    // $this->load->model('admin_model');
+    // $result = $this->admin_model->m_list_of_ngo();
+    // $data = array('data' => $result);
+    $data = array();
     $this->load->view('admin/ngos/index', $data);
   }
 
