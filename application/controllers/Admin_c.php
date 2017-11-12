@@ -20,6 +20,10 @@ class Admin_c extends CI_Controller{
     $this->load->view('admin/ngos/index', $data);
   }
 
+  public function view_ngo($id){
+    $this->load->view('admin/ngos/view_ngo');
+  }
+
   public function engineers(){
     // $this->load->model('admin_model');
     // $result = $this->admin_model->m_list_of_eng();
@@ -28,11 +32,20 @@ class Admin_c extends CI_Controller{
     $this->load->view('admin/engineers/index', $data);
   }
 
+  public function view_engineer($id){
+    $this->load->view('admin/engineers/view_engineer');
+  }
+
+  public function view_question($id){
+    $this->load->view('admin/questions/view_question');
+  }
+
   public function c_list_of_questions(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_questions();
-    $data = array('data' => $result);
-    $this->load->view('list_of_questions', $data);
+    //$this->load->model('admin_model');
+    //$result = $this->admin_model->m_list_of_questions();
+    //$data = array('data' => $result);
+     $data = array();
+    $this->load->view('admin/questions/index', $data);
   }
 
   public function c_list_of_answers(){
@@ -48,6 +61,7 @@ class Admin_c extends CI_Controller{
     $data = array('data' => $result);
     $this->load->view('list_of_comments', $data);
   }
+//changed function name for ngo list
 
   public function c_list_of_ngo_newforms(){
     $this->load->model('admin_model');
@@ -81,11 +95,12 @@ class Admin_c extends CI_Controller{
 
   //delete functions:
 
-      public function c_delete_ngo(){
-			       $id = $this->input->post('ngo_id');
-			       $this->load->model('admin_model');
-			       $this->post_model->m_delete_ngo($id);
-		         redirect('home');
+      public function c_delete_ngo($id){
+             // get the $id from the route url, post is not used
+			       // $id = $this->input->post('ngo_id');
+			       // $this->load->model('admin_model');
+			       // $this->post_model->m_delete_ngo($id);
+		         redirect('/admin/ngos');
 		  }
 
       public function c_delete_eng(){
@@ -116,6 +131,7 @@ class Admin_c extends CI_Controller{
 
 
       //edit functions
+
 
       public function c_edit_question(){
 				$this->load->model('admin_model');
