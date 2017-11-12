@@ -3,12 +3,20 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin_c extends CI_Controller{
 
+  // login
+  public function login(){
+    $this->load->view('admin/login');
+  }
 
-  public function c_list_of_ngo(){
+  public function forgot_password(){
+    $this->load->view('admin/forgot_password');
+  }
+
+  public function ngos(){
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_ngo();
     $data = array('data' => $result);
-    $this->load->view('list_of_ngo', $data);
+    $this->load->view('admin/ngos/index', $data);
   }
 
   public function c_list_of_eng(){
