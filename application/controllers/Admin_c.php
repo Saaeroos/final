@@ -48,16 +48,37 @@ class Admin_c extends CI_Controller{
     $this->load->view('admin/questions/index', $data);
   }
 
+  public function c_list_of_ngo(){
+    $this->load->model('Admin_model');
+    $result = $this->admin_model->m_list_of_ngo();
+    $data = array('data' => $result);
+    $this->load->view('list_of_ngo', $data);
+  }
+
+  public function c_list_of_eng(){
+    $this->load->model('Admin_model');
+    $result = $this->admin_model->m_list_of_eng();
+    $data = array('data' => $result);
+    $this->load->view('list_of_eng', $data);
+  }
+
+  public function c_list_of_questions(){
+    $this->load->model('Admin_model');
+    $result = $this->admin_model->m_list_of_questions();
+    $data = array('data' => $result);
+    $this->load->view('list_of_questions', $data);
+  }
+
   public function c_list_of_answers(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_answers();
+    $this->load->model('Admin_model');
+    $result = $this->Admin_model->m_list_of_answers();
     $data = array('data' => $result);
     $this->load->view('list_of_answers', $data);
   }
 
   public function c_list_of_comments(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_comments();
+    $this->load->model('Admin_model');
+    $result = $this->Admin_model->m_list_of_comments();
     $data = array('data' => $result);
     $this->load->view('list_of_comments', $data);
   }
@@ -65,29 +86,29 @@ class Admin_c extends CI_Controller{
 
   public function c_list_of_ngo_newforms(){
     $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_ngo_newforms();
+    $result = $this->Admin_model->m_list_of_ngo_newforms();
     $data = array('data' => $result);
     $this->load->view('list_of_ngo_forms', $data);
   }
 
   public function c_list_of_eng_newforms(){
     $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_eng_newforms();
+    $result = $this->Admin_model->m_list_of_eng_newforms();
     $data = array('data' => $result);
     $this->load->view('list_of_eng_forms', $data);
   }
 
-
-  public function c_platform_question(){
+  //need some work
+  public function c_platform_all_question(){
     $this->load->model('admin_model');
-    $result = $this->admin_model->m_platform_question();
+    $result = $this->Admin_model->m_platform_question();
     $data = array('data' => $result);
     $this->load->view('list_of_eng_forms', $data);
   }
 
   public function c_platform_detailed_q(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_platform_detailed_q();
+    $this->load->model('Admin_model');
+    $result = $this->Admin_model->m_platform_detailed_q();
     $data = array('data' => $result);
     $this->load->view('list_of_eng_forms', $data);
   }
@@ -98,34 +119,34 @@ class Admin_c extends CI_Controller{
       public function c_delete_ngo($id){
              // get the $id from the route url, post is not used
 			       // $id = $this->input->post('ngo_id');
-			       // $this->load->model('admin_model');
+			       // $this->load->model('Admin_model');
 			       // $this->post_model->m_delete_ngo($id);
 		         redirect('/admin/ngos');
-		  }
+      }
 
       public function c_delete_eng(){
   			   $id = $this->input->post('eng_id');
-  			      $this->load->model('admin_model');
-  			         $this->post_model->m_delete_eng($id);
+  			      $this->load->model('Admin_model');
+  			         $this->Admin_model->m_delete_eng($id);
   			         redirect('home');
   		}
 
       public function c_delete_question(){
     			  $id = $this->input->post('question_id');
-    			  $this->load->model('admin_model');
-    			  $this->post_model->m_delete_question($id);
+    			  $this->load->model('Admin_model');
+    			  $this->Admin_model->m_delete_question($id);
     			  redirect('home');
     	}
       public function c_delete_answer(){
             $id = $this->input->post('answer_id');
-            $this->load->model('admin_model');
-            $this->post_model->m_delete_answer($id);
+            $this->load->model('Admin_model');
+            $this->Admin_model->m_delete_answer($id);
             redirect('home');
       }
       public function c_delete_comment(){
             $id = $this->input->post('comments_id');
-            $this->load->model('admin_model');
-            $this->post_model->m_delete_comment($id);
+            $this->load->model('Admin_model');
+            $this->Admin_model->m_delete_comment($id);
             redirect('home');
       }
 
@@ -134,7 +155,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_question(){
-				$this->load->model('admin_model');
+				$this->load->model('Admin_model');
 				$data = array(
 					           'q_text'    =>  $this->input->post('q_text'),
 					           'question_id' =>	$this->input->post('question_id')
@@ -150,18 +171,18 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/question');
 			     }
 			     else {
-			          $this->load->model('admin_model');
+			          $this->load->model('Admin_model');
 			          $q_content = $this->input->post('updated_q');
 			          $q_id = $this->input->post('q_id');
-			          $array= array('q_data' => $q_data, 'q_id' => $q_id);
-			          $this->post_model->m_update_question($array);
+			          $array= array('q_content' => $q_content, 'q_id' => $q_id);
+			          $this->Admin_model->m_update_question($array);
 			             redirect('admin/questions');
 		      }
 	    }
 
 
       public function c_edit_answer(){
-				$this->load->model('admin_model');
+				$this->load->model('Admin_model');
 				$data = array(
 					           'a_text'    =>  $this->input->post('a_text'),
 					           'answer_id' =>	$this->input->post('answer_id')
@@ -177,18 +198,18 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/answer');
 			     }
 			     else {
-			          $this->load->model('admin_model');
+			          $this->load->model('Admin_model');
 			          $a_content = $this->input->post('updated_a');
 			          $a_id = $this->input->post('a_id');
 			          $array= array('a_content' => $a_content, 'a_id' => $a_id);
-			          $this->post_model->m_update_answer($array);
+			          $this->Admin_model->m_update_answer($array);
 			             redirect('admin/asnwers');
 		      }
 	    }
 
 
       public function c_edit_comment(){
-				$this->load->model('admin_model');
+				$this->load->model('Admin_model');
 				$data = array(
 					           'c_text'    =>  $this->input->post('c_text'),
 					           'comment_id' =>	$this->input->post('comment_id')
@@ -204,14 +225,28 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/comment');
 			     }
 			     else {
-			          $this->load->model('admin_model');
+			          $this->load->model('Admin_model');
 			          $c_content = $this->input->post('updated_c');
 			          $c_id = $this->input->post('c_id');
 			          $array= array('c_content' => $c_content, 'c_id' => $c_id);
-			          $this->post_model->m_update_comment($array);
+			          $this->Admin_model->m_update_comment($array);
 			             redirect('admin/comments');
 		      }
 	    }
+
+      public function c_approve_ngo(){
+        $this->load->model('Admin_model');
+        $id = $this->input->post('ngo_id');
+        $this->Admin_model->m_approve_ngo($id);
+        redirect('admin/new_ngo_list');
+      }
+
+      public function c_approve_eng(){
+        $this->load->model('Admin_model');
+        $id = $this->input->post('eng_id');
+        $this->Admin_model->m_approve_eng($id);
+        redirect('admin/new_eng_list');
+      }
 
 }
 
