@@ -1,4 +1,4 @@
-<ul class="nav flex-column">
+<ul id="sidebar-menu" class="nav flex-column">
   <li class="nav-item">
     <a class="nav-link active" href="/admin/ngos">NGOs</a>
   </li>

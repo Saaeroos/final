@@ -20,11 +20,12 @@ class Admin_c extends CI_Controller{
     $this->load->view('admin/ngos/index', $data);
   }
 
-  public function c_list_of_eng(){
-    $this->load->model('admin_model');
-    $result = $this->admin_model->m_list_of_eng();
-    $data = array('data' => $result);
-    $this->load->view('list_of_eng', $data);
+  public function engineers(){
+    // $this->load->model('admin_model');
+    // $result = $this->admin_model->m_list_of_eng();
+    // $data = array('data' => $result);
+    $data = array();
+    $this->load->view('admin/engineers/index', $data);
   }
 
   public function c_list_of_questions(){

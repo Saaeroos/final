@@ -1,0 +1,21 @@
+/*
+
+#container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#sidebar {
+  flex-direction: column;
+  width: 150px;
+  display: flex;
+  flex-grow: 1;
+
+}
+
+#main {
+  width: 600px;
+  display: flex;
+  flex-grow: 1;
+}
+*/
