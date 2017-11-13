@@ -9,8 +9,11 @@ $route['questions/details']='main/question_detail';
 $route['user/login']= 'main/user_login';
 
 //registration
-$route['ngo_registration']='ngo_c/ngo_register';
-$route['registered']='ngo_c/ngo_registerprocess';
+$route['ngo/registration']='ngo_c/ngo_register';
+$route['registered']='Ngo_c/ngo_registerprocess';
+
+$route['engineer/registration']='eng_c/eng_registerprocess';
+$route['engineer/registered']='eng_c/eng_register';
 
 // Admin section
 $route['admin/login']  = 'admin_c/login';

@@ -10,7 +10,6 @@ h1, h2, h3, h4, h5, h6, .subtitle {
 }
 
 h1, .h1 {
-  font-family: RobotoCondensed-Regular;
   font-size: 64px;
   line-height: 75px;
   color: #0D2B3E;
@@ -86,4 +85,26 @@ h3, .h3 {
   line-height: 16px;
   color: #fff;
   background-color: #FF0053;
+  height: 32px;
+}
+
+ header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px 10px 30px;
+      background-color: #0F0F1B;
+      margin-bottom: 40px;
+    }
+
+header img {
+  margin-bottom: -38px;
+}
+
+header nav a {
+  margin-right: 15px;
+}
+
+header nav a:hover {
+  color: #FF0053;
 }
