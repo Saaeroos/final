@@ -1,9 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+//home page
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'main/homepage';
+$route['questions/details']='main/question_detail';
+//Log In
+$route['user/login']= 'main/user_login';
+
+//registration
+$route['ngo_registration']='ngo_c/ngo_register';
+$route['registered']='ngo_c/ngo_registerprocess';
 
 // Admin section
 $route['admin/login']  = 'admin_c/login';

@@ -10,10 +10,14 @@ class Ngo_c extends CI_Controller{
   		}
 
   //login
-  public function login(){
+
+
+
+
+  public function user_login(){
 			$data= array('error_msg' => $this->session->flashdata('error_msg'));
 
-			$this->load->view('users/login', $data);
+			$this->load->view('users/user_login', $data);
 		}
 
 		public function loginprocess(){
@@ -49,7 +53,9 @@ class Ngo_c extends CI_Controller{
 		public function ngo_register(){
 
 			$data= array('success_msg' => $this->session->flashdata('success'));
-			$this->load->view('/users/register');
+
+			$this->load->view('users/ngo_registration');
+
 		}
 
 		public function	ngo_registerprocess(){
@@ -67,7 +73,7 @@ class Ngo_c extends CI_Controller{
         if ($this->form_validation->run() == FALSE)
         {
 							$this->session->set_flashdata('error', 'invalid data');
-							$this->load->view('users/register');
+							$this->load->view('users/ngo_registration');
 
 
         }
@@ -88,7 +94,7 @@ class Ngo_c extends CI_Controller{
 
 			$this->session->set_flashdata('success', 'Users successfully added. Thanks');
 			$this->User->add_user( $data );
-			redirect(base_url('register'));
+			redirect(base_url('users/ngo_registration'));
         }
 	}
 
