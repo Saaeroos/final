@@ -53,7 +53,31 @@ class Main extends CI_Controller{
     $this->load->view('users/user_platform');
   }
 
+  //14-11-2017 mohamed
+  public function c_get_all_questions(){
+
+      $this->load->model('main_model');
+      $result = $this->main_model->m_get_all_questions();
+      $current_user = $this->session->userdata('currentuser');
+      $data = array(
+              'all_questions' =>$result,
+              'cUser' => $current_user
+            );
+
+      $this->load->view('main', $data);
+    }
+
+    public function c_get_one_question(){
+      $this->load->model('main_model');
+      $q_id = $this->input->post('q_id');
+      $result = $this->main_model->m_get_one_question($q_id);
+      $data = array(
+              'one_questions' =>$result,
+              'cUser' => $current_user
+            );
+
+      $this->load->view('main', $data);
+    }
 
 
 }
-
