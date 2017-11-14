@@ -14,7 +14,11 @@
 
   <header>
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-<button class="btn btn-donate">Donate</button>
+  <a href="/" class="secondary-light-blue">Platform</a>
+  <a href="/user/login" class="secondary-light-blue">Log In</a>
+  <a href="/user/signup" class="secondary-light-blue">Signup</a>
+  <button class="btn btn-donate">Donate</button>
+
   </header>
 
 

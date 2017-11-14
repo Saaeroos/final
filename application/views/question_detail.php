@@ -10,20 +10,20 @@
 <body>
 <header>
   <nav>
-    <a href="user/login" class="secondary-light-blue">Log In</a>
-    <a href="user/signup" class="secondary-light-blue">Signup</a>
-    <a href="/" class="secondary-light-blue">Home</a>
-    <button class="btn btn-donate">Donate</button>
 
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-<button class="btn btn-donate">Donate</button>
+    <a href="/user/login" class="secondary-light-blue">Log In</a>
+    <a href="/user/signup" class="secondary-light-blue">Signup</a>
+    <a href="/" class="secondary-light-blue">Platform</a>
+    <button class="btn btn-donate">Donate</button>
+
+
   </header>
 
-<h1>Detailed Question</h1>
 <div class="container">
   <div class="container-fluid">
-    <h2>Question from NGO</h2>
-      <h3> bjgikolfwofjwlfldbjiwkfwofhio?</h3>
+    <h1>Question from NGO</h1>
+      <h2> bjgikolfwofjwlfldbjiwkfwofhio?</h2>
       <h4>Contact Person:Natalie Rannie</h4>
       <h4>Contact info: +623562488</h4>
       <h4>Description:</h4>
