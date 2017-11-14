@@ -32,6 +32,15 @@ class Ngo_model extends CI_Model{
                               $data['cUser_id']);
       $this->db->query($query, $values);
       }
+
+      //14-11-2017 mohamed
+      public function m_add_comment_ngo($data){
+        $query = "INSERT INTO comments (c_content, answer_id, ngo_id)
+                  VALUES (?,?,?)";
+        $query = array($data['c_comment_text'], $data['a_id'],
+                        $data['ngo_id']);
+        $this->db->query($query, $values);
+      }
 }
 
 

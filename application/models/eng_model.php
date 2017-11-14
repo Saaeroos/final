@@ -16,4 +16,22 @@ class Eng_model extends CI_Model{
     return $this->db->query($query, $values);
   }
 
+
+  //14-11-2017 mohamed
+  public function m_add_answer($data){
+    $query = "INSERT INTO answers(a_content, question_id, engineer_id)
+              VALUES (?,?,?)";
+    $values = array($data['c_a_content'], $data['c_q_id'],
+                    $data['c_eng_id']);
+    $this->db->query($query, $values);
+
+  }
+
+  public function m_add_comment_eng($data){
+    $query = "INSERT INTO comments (c_content, answer_id, engineer_id)
+              VALUES (?,?,?)";
+    $query = array($data['c_comment_text'], $data['a_id'],
+                    $data['eng_id']);
+    $this->db->query($query, $values);
+  }
 }

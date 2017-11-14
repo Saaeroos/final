@@ -60,7 +60,53 @@ class Eng_c extends CI_Controller{
     redirect(base_url('register'));
       }
 }
+
+//14-11-2017 mohamed
+
+public function c_add_answer(){
+    $this->form_validation->set_rules('a_content', 'Answer content', 'trim|required');;
+    if($this->form_validation->run() == FALSE){
+          $data = array(
+                  'cUser' => $this->session->userdata('currentUser')
+                );
+          $this->load->view('/users/create', $data);
+
+    }
+    else{
+
+      $cUser = $this->session->userdata('currentUser');
+      $q_id = $this->input->post('q_id');
+      $cUser_id = $cUser['id'];
+      $data = array(
+            'c_a_content' 			=> $this->input->post('a_content',true),
+            'c_a_id' 			    => $a_id,
+            'c_eng_id'		  	=> $cUser_id,
+              );
+      $this->load->model('Ngo_model');
+      $this->Ngo_model->m_add_answer($data);
+      redirect(base_url());
+    }
+
 }
+
+public function c_add_comment_eng(){
+    $comment_text = $this->input->post('comment_text');
+    $q_id = $this->input->post('a_id');
+    $eng_user = $this->session->userdata('currentuser');
+    $eng_id = $eng_user['id'];
+    $this->load->model('main-model');
+    $data = array( 'c_comment_text' =>$comment_text,
+                   'a_id' =>$a_id,
+                   'eng_id' =>$eng_id);
+
+    $this->main_model->m_add_comment($data);
+    redirect("/home");
+    }
+
+
+    }
+
+
 
 
 

@@ -110,6 +110,23 @@ class Ngo_c extends CI_Controller{
         }
 
     }
+
+
+    //14-11-2017 mohamed
+    public function c_add_comment_ngo(){
+        $comment_text = $this->input->post('comment_text');
+        $a_id = $this->input->post('a_id');
+        $ngo_user = $this->session->userdata('currentuser');
+        $ngo_id = $ngo_user['id'];
+        $this->load->model('main-model');
+        $data = array( 'c_comment_text' =>$comment_text,
+                       'a_id' =>$a_id,
+                       'ngo_id' =>$ngo_id);
+
+        $this->main_model->m_add_comment($data);
+        redirect("/home");
+        }
+
 }
 
 
