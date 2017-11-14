@@ -7,6 +7,9 @@ class Main extends CI_Controller{
 
     $this->load->view('homepage');
   }
+  public function signup(){
+    $this->load->view('users/signup');
+  }
 
   public function question_detail(){
     $this->load->view('question_detail');

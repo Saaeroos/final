@@ -14,6 +14,7 @@ $route['user/signup']='main/signup';
 
 //registration
 $route['ngo/registration']='ngo_c/ngo_register';
+
 $route['registered']='Ngo_c/ngo_registerprocess';
 
 $route['engineer/registration']='eng_c/eng_registerprocess';
