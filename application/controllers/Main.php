@@ -11,6 +11,8 @@ class Main extends CI_Controller{
     $this->load->view('users/signup');
   }
 
+
+
   public function question_detail(){
     $this->load->view('question_detail');
   }
@@ -47,5 +49,11 @@ class Main extends CI_Controller{
       }
 
     }
+    public function user_platform(){
+    $this->load->view('users/user_platform');
+  }
+
+
+
 }
 

@@ -21,7 +21,7 @@
 
   <div class="container">
 
-    <form method="POST" action="">
+    <form method="POST" action="platform">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">

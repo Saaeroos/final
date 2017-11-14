@@ -9,6 +9,9 @@ $route['question/details']='main/question_detail';
 $route['user/login']= 'main/user_login';
 $route['user/platform']='main/loginprocess';
 
+$route['platform']='main/user_platform';
+
+
 //SignUp
 $route['user/signup']='main/signup';
 
