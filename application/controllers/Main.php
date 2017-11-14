@@ -4,8 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller{
 
   public function homepage(){
+    $this->load->model('main_model');
+    $questions_from_db = $this->main_model->m_get_20_questions();
 
-    $this->load->view('homepage');
+    $view_data = array(
+      'questions_for_view' => $questions_from_db
+    );
+
+    $this->load->view('homepage', $view_data);
   }
   public function signup(){
     $this->load->view('users/signup');
@@ -16,8 +22,11 @@ class Main extends CI_Controller{
   }
 
   public function view_question($question_id) {
-    // code to load the question from database
-    $this->load->view('questions/view_question');
+    $this->load->model('main_model');
+    $question_from_db = $this->main_model->m_get_one_question_by_id($question_id);
+
+    $view_data = array('question' => $question_from_db);
+    $this->load->view('questions/view_question', $view_data);
   }
   public function user_login(){
       $data= array('error_msg' => $this->session->flashdata('error_msg'));
