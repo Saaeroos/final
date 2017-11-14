@@ -18,9 +18,10 @@
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
   <nav>
     <a href="user/login" class="secondary-light-blue">Log In</a>
-    <a href="" class="secondary-light-blue">Signup</a>
+    <a href="user/signup" class="secondary-light-blue">Signup</a>
     <button class="btn btn-donate">Donate</button>
-  </div>
+   </nav>
+
   </header>
 
   <div class="container">

@@ -9,6 +9,12 @@
 </head>
 <body>
 <header>
+  <nav>
+    <a href="user/login" class="secondary-light-blue">Log In</a>
+    <a href="" class="secondary-light-blue">Signup</a>
+    <a href="user/login" class="secondary-light-blue">Home</a>
+    <button class="btn btn-donate">Donate</button>
+
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
 <button class="btn btn-donate">Donate</button>
   </header>
