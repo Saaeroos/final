@@ -27,7 +27,7 @@
 
   <div class="container">
 
-<form>
+<form action="">
     <div class="form-group">
     <label for="exampleFormControlTextarea1">Add your question</label>
     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -35,7 +35,6 @@
   <button type="submit" class="btn btn-primary">Add question</button>
 
   </form>
-
 
 </div>
 

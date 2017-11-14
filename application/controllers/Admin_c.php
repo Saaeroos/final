@@ -62,12 +62,13 @@ class Admin_c extends CI_Controller{
     $this->load->view('list_of_eng', $data);
   }
 
-  public function c_list_of_questions(){
-    $this->load->model('Admin_model');
-    $result = $this->admin_model->m_list_of_questions();
-    $data = array('data' => $result);
-    $this->load->view('list_of_questions', $data);
-  }
+  //public function c_list_of_questions(){
+  //   $this->load->model('Admin_model');
+  //   $result = $this->admin_model->m_list_of_questions();
+  //   $data = array('data' => $result);
+  //, $data);
+  //$this->load->view('admin/questions/view_question');
+ // }
 
   public function c_list_of_answers(){
     $this->load->model('Admin_model');

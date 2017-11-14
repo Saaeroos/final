@@ -11,10 +11,13 @@ class Main extends CI_Controller{
     $this->load->view('users/signup');
   }
 
-
-
   public function question_detail(){
     $this->load->view('question_detail');
+  }
+
+  public function view_question($question_id) {
+    // code to load the question from database
+    $this->load->view('questions/view_question');
   }
   public function user_login(){
       $data= array('error_msg' => $this->session->flashdata('error_msg'));
@@ -53,7 +56,24 @@ class Main extends CI_Controller{
     $this->load->view('users/user_platform');
   }
 
+  public function user_question(){
+    $this->load->view('users/add_question');
+  }
+
+  public function c_get_all_questions(){
+
+      //$this->load->model('main_model');
+     // $result = $this->main_model->m_get_all_questions();
+      //$current_user = $this->session->userdata('currentuser');
+     // $data = array(
+              //'all_questions' =>$result,
+             // 'cUser' => $current_user
+           // );
+
+      $this->load->view('users/user_platform');
 
 
+
+}
 }
 
