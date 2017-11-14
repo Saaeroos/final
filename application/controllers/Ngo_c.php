@@ -14,39 +14,7 @@ class Ngo_c extends CI_Controller{
 
 
 
-  public function user_login(){
-			$data= array('error_msg' => $this->session->flashdata('error_msg'));
 
-			$this->load->view('users/user_login', $data);
-		}
-
-		public function loginprocess(){
-			$this->form_validation->set_rules('email', "Email", 'required|valid_email');
-			$this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
-
-			if ($this->form_validation->run() == FALSE) {
-
-				// $this->session->set_flashdata('faild', 'invalid data');
-				$this->load->view('users/login');
-			}
-			else{
-				$email= $this->input->post('email',true);
-				$password= $this->input->post('password',true);
-				$this->load->model('User');
-				$result = $this->User->loginByEmailPass($email, $password);
-
-
-							if($result){
-											$this->session->set_userdata('currentUser', $result);
-											redirect(base_url('mainpage'));
-							}
-							else{
-											$this->session->set_flashdata('error_msg', 'invalid data');
-											redirect(base_url('login'));
-							}
-			}
-
-		}
 
 
     //register

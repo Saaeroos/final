@@ -9,8 +9,11 @@
 </head>
 <body>
 <header>
-  <h1>Deatailed Question</h1>
-</header>
+  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
+<button class="btn btn-donate">Donate</button>
+  </header>
+
+<h1>Detailed Question</h1>
 <div class="container">
   <div class="container-fluid">
     <h2>Question from NGO</h2>

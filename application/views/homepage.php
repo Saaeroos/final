@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <?php $this->load->view('admin/application/bootstrap') ?>
   <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-  <meta charset="utf-8">
+
   <title>Homepage</title>
   <style type="text/css">
     header{
@@ -17,7 +17,8 @@
   <header>
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
   <nav>
-    <a href="/signup" class="secondary-light-blue">Signup</a>
+    <a href="user/login" class="secondary-light-blue">Log In</a>
+    <a href="" class="secondary-light-blue">Signup</a>
     <button class="btn btn-donate">Donate</button>
   </div>
   </header>
@@ -30,9 +31,11 @@
         <div class="card-body">
           <h4 class="card-title">Card title that wraps to a new line</h4>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <a href="#" class="btn btn-primary">View Question</a>
+          <a href="/question/details" class="btn btn-primary">View Question</a>
         </div>
       </div>
+
+
       <div class="card">
         <img class="card-img-top" src="https://www.ewbnl.org/wp-content/uploads/2016/01/SAM_1966.jpg" alt="Card image cap">
         <div class="card-body">

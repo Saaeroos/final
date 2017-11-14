@@ -11,9 +11,15 @@
 </head>
 <body>
 
+
+  <header>
+  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
+<button class="btn btn-donate">Donate</button>
+  </header>
+
   <div class="container">
 
-    <form>
+    <form method="POST" action="">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
