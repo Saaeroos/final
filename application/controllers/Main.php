@@ -3,16 +3,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends CI_Controller{
 
-  public function homepage(){
-    $this->load->model('main_model');
-    $questions_from_db = $this->main_model->m_get_20_questions();
+  public function homepage() {
+    if (empty($this->session->userdata('currentUser'))) {
+      $this->load->model('main_model');
+      $questions_from_db = $this->main_model->m_get_20_questions();
 
-    $view_data = array(
-      'questions_for_view' => $questions_from_db
-    );
+      $view_data = array(
+        'questions_for_view' => $questions_from_db
+      );
 
-    $this->load->view('homepage', $view_data);
+      $this->load->view('homepage', $view_data);
+    } else {
+      $view_data = array(
+        'user' => $this->session->userdata('currentUser')
+      );
+
+      $this->load->view('users/user_platform', $view_data);
+    }
   }
+
   public function signup(){
     $this->load->view('users/signup');
   }
@@ -28,42 +37,36 @@ class Main extends CI_Controller{
     $view_data = array('question' => $question_from_db);
     $this->load->view('questions/view_question', $view_data);
   }
-  public function user_login(){
-      $data= array('error_msg' => $this->session->flashdata('error_msg'));
-
-      $this->load->view('users/user_login', $data);
-    }
 
     public function loginprocess(){
-      $this->form_validation->set_rules('email', "Email", 'required|valid_email');
+      $this->form_validation->set_rules('username', "Username", 'required');
       $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
 
       if ($this->form_validation->run() == FALSE) {
-
-        // $this->session->set_flashdata('faild', 'invalid data');
         $this->load->view('users/user_login');
       }
       else{
-        $email= $this->input->post('email',true);
+        $username= $this->input->post('username',true);
         $password= $this->input->post('password',true);
         $this->load->model('User');
-        $result = $this->User->loginByEmailPass($email, $password);
+        $result = $this->User->loginByUsernamePass($username, $password);
 
-
-              if($result){
+              if(!empty($result)){
                       $this->session->set_userdata('currentUser', $result);
-                      redirect(base_url('user/platform'));
+                      redirect('/');
               }
               else{
-                      $this->session->set_flashdata('error_msg', 'invalid data');
-                      redirect(base_url('user/login'));
+                $view_data = array('error_login' => 'Incorrect username or password.');
+                  $this->load->view('users/user_login', $view_data);
               }
       }
 
     }
-    public function user_platform(){
-    $this->load->view('users/user_platform');
-  }
+
+    public function logout() {
+      session_destroy();
+      redirect('/');
+    }
 
   public function user_question(){
     $this->load->view('users/add_question');
@@ -93,5 +96,7 @@ class Main extends CI_Controller{
             );
       $this->load->view('main', $data);
     }
+
+
 
 }

@@ -20,15 +20,16 @@
 </head>
 <body>
   <div class="container">
+    <?php if ($user['role'] == 'ngo'){ ?>
+      <form method="POST" action="/questions/add">
+        <div class="form-group">
+        <label for="exampleFormControlTextarea1">Add your question</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="title"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Add question</button>
+    </form>
+  <?php } ?>
 
-<form>
-    <div class="form-group">
-    <label for="exampleFormControlTextarea1">Add your question</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary">Add question</button>
-
-  </form>
 
 <h2>Questions</h2>
 <ul class="list-unstyled">

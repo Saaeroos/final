@@ -3,40 +3,56 @@
 
 
 <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-  <meta charset="utf-8">
-<header>
-  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-  <a href="/" class="secondary-light-blue">Platform</a>
-  <a href="/user/Profile" class="secondary-light-blue">Profile</a>
-  <button class="btn btn-donate">Donate</button>
-  </header>
+<?php $this->load->view('admin/application/bootstrap') ?>
+<link rel="stylesheet" type="text/css" href="/assets/platform.css">
+<meta charset="utf-8">
 <head>
   <title>Add your Question</title>
 </head>
 <body>
   <header>
-  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-  <a href="/" class="secondary-light-blue">Platform</a>
-  <a href="/user/login" class="secondary-light-blue">Log In</a>
-  <a href="/user/signup" class="secondary-light-blue">Signup</a>
-  <button class="btn btn-donate">Donate</button>
+    <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
+    <a href="/" class="secondary-light-blue">Platform</a>
+    <a href="/user/login" class="secondary-light-blue">Log In</a>
+    <a href="/user/signup" class="secondary-light-blue">Signup</a>
+    <button class="btn btn-donate">Donate</button>
 
   </header>
 
   <div class="container">
+    <?php $this->load->view('validation_errors') ?>
 
-<form action="">
-    <div class="form-group">
-    <label for="exampleFormControlTextarea1">Add your question</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <form method="POST" action="/questions/add">
+      <div class="form-group">
+        <label for="title">Add your question</label>
+        <textarea class="form-control" id="title" name="title" ><?php echo set_value('title'); ?></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" rows="3" name="q_content"><?php echo set_value('q_content'); ?></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="when_needed">When Needed:</label>
+        <textarea  name='when_needed' class="form-control" id="when_needed" rows="1"><?php echo set_value('when_needed'); ?></textarea>
+      </div>
+      <div class="form-group">
+        <label for="attachment">Photo</label>
+        <div>
+          <input id="attachment" type="file" name="attachment" size="20">
+        </div>
+      </div>
+
+
+
+
+
+      <button type="submit" class="btn btn-primary">Add question</button>
+
+    </form>
+
   </div>
-  <button type="submit" class="btn btn-primary">Add question</button>
-
-  </form>
-
-</div>
 
 
 

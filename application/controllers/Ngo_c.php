@@ -78,37 +78,29 @@ class Ngo_c extends CI_Controller{
 
 
     public function add_question(){
-        $this->form_validation->set_rules('title', 'Title', 'trim|required');
-				$this->form_validation->set_rules('description', 'Description', 'trim|required');
-				$this->form_validation->set_rules('price', 'Price', 'trim|required');
-				$this->form_validation->set_rules('contact_details', 'Contact_details', 'trim|required');
-				$this->form_validation->set_rules('location', 'Location', 'trim|required');
-        if($this->form_validation->run() == FALSE){
-							$data = array(
-											'cUser' => $this->session->userdata('currentUser')
-										);
-              $this->load->view('/users/create', $data);
+      $this->form_validation->set_rules('title', 'title', 'trim|required');
+			$this->form_validation->set_rules('q_content', 'description', 'trim|required');
+      $this->form_validation->set_rules('when_needed', 'when needed', 'trim|required');
 
-							// redirect(base_url('create'));
+      if($this->form_validation->run() == FALSE){
+        $this->load->view('/users/add_question');
+      }
+      else{
+        $this->load->model('Ngo_model');
+				$cUser = $this->session->userdata('currentUser');
 
-        }
-        else{
+        $question = array(
+          'c_title' => $this->input->post('title'),
+        'c_content' => $this->input->post('q_content'),
+          'c_when_needed' =>$this->input->post('when_needed'),
+          'c_attachment' =>$this->input->post('attachment'),
+          'cUser_id' => $cUser['id']
+        );
 
-					$cUser = $this->session->userdata('currentUser');
-					$cUser_id = $cUser['id'];
-          $postValues = array(
-                'c_title' 						=> $this->input->post('title',true),
-                'c_description' 			=> $this->input->post('description',true),
-                'c_price'						 	=> $this->input->post('price',true),
-                'c_contact_details'		=> $this->input->post('contact_details',true),
-								'c_location' 					=> $this->input->post('location',true),
-								'cUser_id' 						=> $cUser_id
-              		);
-          $this->load->model('post_model');
-          $this->post_model->insert_list($postValues);
-          redirect(base_url());
-        }
-
+        $this->Ngo_model->m_add_question($question);
+        $this->session->set_flashdata('success', 'Thank you for adding your question.');
+        redirect('/');
+      }
     }
 
 
