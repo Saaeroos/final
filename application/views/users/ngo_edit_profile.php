@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-
-  <title>Registration</title>
-</head>
-<body>
-
-</head>
-<body>
-  <?php $this->load->view('header') ?>
+<?php $this->load->view('html_head', array('title' => 'Edit Profile')) ?>
+<?php $this->load->view('header') ?>
 
   <div class="container">
     <?php $this->load->view('validation_errors') ?>

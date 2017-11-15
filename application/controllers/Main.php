@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller{
 
   public function homepage() {
+    //$this->output->enable_profiler(TRUE);
+
     $this->load->model('main_model');
     $questions_from_db = $this->main_model->m_get_20_questions();
 

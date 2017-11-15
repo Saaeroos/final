@@ -1,22 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-  <meta charset="utf-8">
-  <title>Your Profile</title>
-</head>
-<body>
-  <header>
-
-
-    <?php $this->load->view('header') ?>
-
-  </header>
-
-
-
+<?php $this->load->view('html_head', array('title' => 'Your Profile')) ?>
+<?php $this->load->view('header') ?>
 
       <div class="container-fluid col-md-9">
         <dl class="row">

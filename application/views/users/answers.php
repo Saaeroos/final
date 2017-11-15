@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-  <meta charset="utf-8">
-
-
-  <title>Your Answer</title>
-</head>
-<body>
-
-
-  <header>
-  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-  <a href="/" class="secondary-light-blue">Platform</a>
-  <a href="/user/login" class="secondary-light-blue">Log In</a>
-  <button class="btn btn-donate">Donate</button>
-  </header>
+<?php $this->load->view('html_head', array('title' => 'Your Answer')) ?>
+<?php $this->load->view('header') ?>
 
   <div class="container">
     <div class="container-flud">

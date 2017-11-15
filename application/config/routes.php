@@ -19,8 +19,7 @@ $route['user/ngo/profile/edit'] = 'ngo_c/ngo_edit_profile';
 $route['user/ngo/profile/update'] = 'ngo_c/c_update_ngo';
 $route['user/ngo/profile/delete'] = 'ngo_c/ngo_delete_profile';
 
-
-$route['user/engineer/profile']= 'eng_c/engineer_profile';
+$route['user/engineer/profile']= 'main/c_show_profile_details';
 
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';

@@ -165,6 +165,8 @@ class Ngo_c extends CI_Controller{
   public function ngo_delete_profile() {
     $this->load->model('Ngo_model');
     $this->Ngo_model->m_delete_ngo($this->session->currentUser['id']);
+    session_destroy();
+    redirect('/');
   }
 
 

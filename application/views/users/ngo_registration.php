@@ -1,32 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-
-  <title>Registration</title>
-</head>
-<body>
-
-</head>
-<body>
-  <?php $this->load->view('header') ?>
+<?php $this->load->view('html_head', array('title' => 'Registration')) ?>
+<?php $this->load->view('header') ?>
 
   <div class="container">
-  <?php if( null !==($this->session->flashdata('success')) ){ ?>
-                <div class="alert alert-success"><?= $this->session->flashdata('success'); ?></div>
-                <?php } ?>
-
-               <?php
-                    $err = validation_errors('<li>', '</li>');
-                    if( $err ) {
-                ?>
-                    <ul class="list-unstyled alert alert-danger">
-                    <?php echo $err; ?>
-                    </ul>
-                <?php } ?>
-
+  <?php $this->load->view('validation_errors') ?>
 
     <h2>NGO Register</h2>
 

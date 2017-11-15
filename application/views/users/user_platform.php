@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <?php $this->load->view('admin/application/bootstrap') ?>
-  <link rel="stylesheet" type="text/css" href="/assets/platform.css">
-  <title>Platform</title>
-</head>
-<body class="platform">
-  <?php $this->load->view('header') ?>
+<?php $this->load->view('html_head', array('title' => 'Platform')) ?>
+<?php $this->load->view('header') ?>
+
   <div class="container">
     <?php if ($user['role'] == 'ngo'){ ?>
       <form method="POST" action="/questions/add" class="mb-4">

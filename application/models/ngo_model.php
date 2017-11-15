@@ -56,8 +56,6 @@ class Ngo_model extends CI_Model{
   public function m_delete_ngo($id){
     $query = "DELETE FROM ngos WHERE id=?";
     $this->db->query($query, $id);
-    session_destroy();
-    redirect('/');
   }
 
 }

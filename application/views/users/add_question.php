@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-
-<meta charset="utf-8">
-<?php $this->load->view('admin/application/bootstrap') ?>
-<link rel="stylesheet" type="text/css" href="/assets/platform.css">
-<meta charset="utf-8">
-<head>
-  <title>Add your Question</title>
-</head>
-<body>
-
-  <?php $this->load->view('header') ?>
+<?php $this->load->view('html_head', array('title' => 'Add your question')) ?>
+<?php $this->load->view('header') ?>
 
   <div class="container">
     <?php $this->load->view('validation_errors') ?>
