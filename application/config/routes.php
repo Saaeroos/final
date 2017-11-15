@@ -15,8 +15,13 @@ $route['logout'] = 'main/logout';
 //$route['questions']='main/'
 
 $route['user/ngo/profile']='main/c_show_profile_details';
+$route['user/ngo/profile/edit'] = 'ngo_c/ngo_edit_profile';
+$route['user/ngo/profile/update'] = 'ngo_c/c_update_ngo';
+$route['user/ngo/profile/delete'] = 'ngo_c/ngo_delete_profile';
+
+
 $route['user/engineer/profile']= 'eng_c/engineer_profile';
-// $route['user/engineer/profile/edit']
+
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';
 
@@ -44,8 +49,8 @@ $route['admin/edit/answer']= 'admin_c/c_edit_answer';
 $route['admin/edit/comment']= 'admin_c/c_edit_comment';
 //update buttons routes
 $route['admin/update/comment']= 'admin_c/c_edit_comment';
-$route['admin/update/answer']= 'admin_c/c_update_answer'
-$route['admin/update/question']= 'admin_c/c_update_question'
+$route['admin/update/answer']= 'admin_c/c_update_answer';
+$route['admin/update/question']= 'admin_c/c_update_question';
 
 $route['admin/engineers'] = 'admin_c/engineers';
 

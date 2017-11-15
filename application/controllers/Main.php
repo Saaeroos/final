@@ -153,7 +153,7 @@ class Main extends CI_Controller{
 
         $result = $this->main_model->m_eng_details($id);
         $data = array(
-                'result' =>$result,
+                'engineer' => $result,
                 'cUser' => $current_user
               );
        $this->load->view('users/engineer_profile', $data);
@@ -162,7 +162,7 @@ class Main extends CI_Controller{
       else{
         $result = $this->main_model->m_ngo_details($id);
         $data = array(
-                'result' =>$result,
+                'ngo' =>$result,
                 'cUser' => $current_user
               );
        $this->load->view('users/ngo_profile', $data);

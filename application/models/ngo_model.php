@@ -43,15 +43,23 @@ class Ngo_model extends CI_Model{
       }
 
       public function m_update_ngo($data) {
-        $query = "UPDATE ngos SET (name, contact_person, contact_email,
-                    fields_of_activity, website, username, password)
-                  VALUES(?,?,?,?,?,?,?)";
+        $query = "UPDATE ngos SET name = ?, contact_person = ?, contact_email = ?,
+                    fields_of_activity = ?, website = ?, username = ?, password = ?
+                  WHERE id = ?";
 
         $values = array($data['c_name'], $data['c_contact_person'],
                       $data['c_contact_email'], $data['c_fields_activity'],
-                      $data['c_website'], $data['c_username'], $data['c_password']);
+                      $data['c_website'], $data['c_username'], $data['c_password'], $data['id']);
         $this->db->query($query, $data);
       }
+
+  public function m_delete_ngo($id){
+    $query = "DELETE FROM ngos WHERE id=?";
+    $this->db->query($query, $id);
+    session_destroy();
+    redirect('/');
+  }
+
 }
 
 

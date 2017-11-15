@@ -114,38 +114,58 @@ class Ngo_c extends CI_Controller{
 
         //15-11-2017 mohamed
             public function ngo_edit_profile(){
-              $this->load->model('ngo_model');
+              // $this->load->model('ngo_model');
+              $this->load->model('main_model');
               $cUser = $this->session->userdata('currentUser');
               $ngo_id = $cUser['id'];
-              $result = $this->eng_model->select_one_ngo($ngo_id);
+              // $result = $this->ngo_model->select_one_ngo($ngo_id);
+              $result = $this->main_model->m_ngo_details($ngo_id);
               $data = array(
-                    'result'    => $result,
+                    'ngo'    => $result,
                     'cUser'		=> $cUser
                       );
-              $this->load->view('ngos/view_ngo', $data);
+              $this->load->view('users/ngo_edit_profile', $data);
             }
 
-            public function c_update_ngo(){
-              $data = array(
-        				'c_name'              => $this->input->post('form_name',true),
-        				'c_contact_person'    => $this->input->post('form_contact_person',true),
-        				'c_contact_email'    => $this->input->post('form_contact_email',true),
-                'c_fields_activity'   => $this->input->post('form_fields_activity',true),
-        				'c_website'           => $this->input->post('form_website',true),
-                'c_username'          => $this->input->post('form_username',true),
-                'c_password'          => $this->input->post('form_password',true)
-                );
+  public function c_update_ngo(){
+    $this->form_validation->set_rules('form_name', 'Name', 'trim|required');
+    $this->form_validation->set_rules('form_contact_person', 'Contact person', 'trim|required');
+    $this->form_validation->set_rules('form_contact_email',    'Email', 'trim|required|valid_email');
+    $this->form_validation->set_rules('form_fields_activity', 'Fields of activity', 'trim|required');
+    $this->form_validation->set_rules('form_website', 'Website', 'trim');
+    $this->form_validation->set_rules('form_username', 'Username', 'required|trim|min_length[5]');
+    $this->form_validation->set_rules('form_password', 'Password', 'required|trim|min_length[7]');
+    $this->form_validation->set_rules('form_con_password', 'password Confirmation', 'trim|required|matches[form_password]');
 
-                $this->session->set_flashdata('success', 'Data successfully updated');
-                $this->Eng_model->m_update_ngo( $data );
-                redirect(base_url('register'));
-                  }
-            }
+        if ($this->form_validation->run() == FALSE)
+        {
+          $this->load->view('users/ngo_update_profile');
+        }
+        else
+        {
+          $data = array(
+    				'c_name'              => $this->input->post('form_name',true),
+    				'c_contact_person'    => $this->input->post('form_contact_person',true),
+    				'c_contact_email'     => $this->input->post('form_contact_email',true),
+            'c_fields_activity'   => $this->input->post('form_fields_activity',true),
+    				'c_website'           => $this->input->post('form_website',true),
+            'c_username'          => $this->input->post('form_username',true),
+            'c_password'          => $this->input->post('form_password',true),
+            'id'                  => $this->session->currentUser['id'],
+            );
+
+            $this->load->model('Ngo_model');
+            $this->session->set_flashdata('success', 'Data successfully updated');
+            $this->Ngo_model->m_update_ngo( $data );
+            redirect('/user/ngo/profile');
+        }
+      }
 
 
+  public function ngo_delete_profile() {
+    $this->load->model('Ngo_model');
+    $this->Ngo_model->m_delete_ngo($this->session->currentUser['id']);
+  }
 
 
-
-
-
- ?>
+}
