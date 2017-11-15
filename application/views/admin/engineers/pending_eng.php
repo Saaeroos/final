@@ -62,17 +62,22 @@
              <?php foreach ($data as $item){ ?>
             <th scope="row"><?= $item['id']; ?></th>
             <td><?= $item['name']; ?></td>
+            <td><?= $item['username']; ?></td>
             <td><?= $item['email']; ?></td>
             <td><?= $item['phone']; ?></td>
              <td><?= $item['created_at']; ?></td>
             <td>
               <form method="post" action="<?= base_url(); ?> show_eng_detail">
                   <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
-                  <input type="submit" name="Edit" class="btn btn-link" >
+                  <input type="submit" class="Edit" class="btn btn-link" >
+              </form>
+              <form method="post" action="<?= base_url(); ?> c_approve_eng">
+                  <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
+                  <input type="submit" name="Approve" class="btn btn-link" >
               </form>
               <form method="post" action="<?= base_url(); ?> eng_delete">
                 <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
-                <input type="submit" name="Delete" class="btn btn-link">
+                <input type="submit" name="Delete" class="btn btn-link" >
             </td>
           <?php } ?>
 

@@ -27,7 +27,7 @@
       </section>
 
       <section id="main" class="col-md-9">
-        <div><h1>List of NGO's</h1></div>
+        <div><h1>List of Pending NGO's</h1></div>
 
         <table class="table table-striped">
           <thead>
@@ -37,6 +37,7 @@
               <th scope="col">Contact Email</th>
               <th scope="col">Contact Person</th>
               <th scope="col">NGO Username</th>
+              <th scope="col">Website</th>
               <th scope="col">Actions</th>
             </tr>
           </thead>
@@ -45,13 +46,18 @@
               <?php foreach($data as $item){ ?>
               <th scope="row"><?= $item['id']; ?></th>
               <td><?= $item['name']; ?></td>
-              <td><?= $item['contact_person']; ?></td>
               <td><?= $item['contact_email']; ?></td>
+              <td><?= $item['contact_person']; ?></td>
+              <td><?= $item['username']; ?></td>
               <td><?= $item['website']; ?></td>
               <td>
-                <form method="post" action="<?= base_url(); ?> show_ngo_detail">
-                    <input type="hidden" name="ngo__id" value="<?= $item['id']; ?>">
-                    <input type="submit" name="Edit" class="btn btn-link" >
+                <form method="post" action="<?= base_url(); ?> c_show_details_ngo">
+                    <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
+                    <input type="submit" name="Details" class="btn btn-link" >
+                </form>
+                <form method="post" action="<?= base_url(); ?> c_approve_ngo">
+                    <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
+                    <input type="submit" name="Approve" class="btn btn-link" >
                 </form>
                 <form method="post" action="<?= base_url(); ?> c_delete_ngo">
                   <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">

@@ -159,15 +159,15 @@ class Admin_c extends CI_Controller{
 				$this->load->model('Admin_model');
 				$data = array(
 					           'q_text'    =>  $this->input->post('q_text'),
-					           'question_id' =>	$this->input->post('question_id')
+					           'q_id' =>	$this->input->post('q_id')
 				             );
 				$this->load->view('admin/edit/question', $data);
 		  }
 
 		  public function c_update_question(){
-			     $data = $this->input->post('updated_q');
+			     // $data = $this->input->post('updated_q');
 
-				$this->form_validation->set_rules('updated_q', 'updated_q', 'trim|required');
+				$this->form_validation->set_rules('updated_q', 'Updated question', 'trim|required');
 			     if($this->form_validation->run() == FALSE){
               $this->load->view('admin/edit/question');
 			     }
@@ -183,10 +183,10 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_answer(){
-				$this->load->model('Admin_model');
+				// $this->load->model('Admin_model');
 				$data = array(
 					           'a_text'    =>  $this->input->post('a_text'),
-					           'answer_id' =>	$this->input->post('answer_id')
+					           'answer_id' =>	$this->input->post('a_id')
 				             );
 				$this->load->view('admin/edit/answer', $data);
 		  }
@@ -210,7 +210,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_comment(){
-				$this->load->model('Admin_model');
+				// $this->load->model('Admin_model');
 				$data = array(
 					           'c_text'    =>  $this->input->post('c_text'),
 					           'comment_id' =>	$this->input->post('comment_id')
@@ -221,7 +221,7 @@ class Admin_c extends CI_Controller{
 		  public function c_update_comment(){
 			     $data = $this->input->post('updated_c');
 
-				$this->form_validation->set_rules('updated_c', 'updated_c', 'trim|required');
+				$this->form_validation->set_rules('updated_c', 'Updated comment', 'trim|required');
 			     if($this->form_validation->run() == FALSE){
               $this->load->view('admin/edit/comment');
 			     }

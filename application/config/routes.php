@@ -38,6 +38,14 @@ $route['admin/ngos']= 'admin_c/ngos';
 $route['admin/ngos/view/(:num)']= 'admin_c/view_ngo/$1';
 $route['admin/ngos/delete/(:num)'] = 'admin_c/c_delete_ngo/$1';
 
+//15-11-2017 mohamed admin edit routes
+$route['admin/edit/question']= 'admin_c/c_edit_question';
+$route['admin/edit/answer']= 'admin_c/c_edit_answer';
+$route['admin/edit/comment']= 'admin_c/c_edit_comment';
+//update buttons routes
+$route['admin/update/comment']= 'admin_c/c_edit_comment';
+$route['admin/update/answer']= 'admin_c/c_update_answer'
+$route['admin/update/question']= 'admin_c/c_update_question'
 
 $route['admin/engineers'] = 'admin_c/engineers';
 
