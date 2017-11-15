@@ -32,4 +32,26 @@ public function m_get_one_question_by_id($id){
   return $this->db->query($query, array($id))->row_array();
 }
 
+public function get_comments_by_answer_id($a_id){
+$query = "SELECT engineer_id FROM comments
+          WHERE answer_id=?";
+$result = $this->db->query($query, $a_id)->row_array();
+
+  if($result == NULL){
+    $query="SELECT * FROM comments LEFT JOIN answers
+            ON comments.answer_id=answers.id
+            LEFT JOIN ngos
+            ON commnets.ngo_id=ngos.id
+            WHERE comments.answer_id=?";
+    return $this->db->query($query, $a_id)->result_array();
+  }
+  else{
+    $query="SELECT * FROM comments LEFT JOIN answers
+            ON comments.answer_id=answers.id
+            LEFT JOIN engineers
+            ON commnets.engineer_id=engineers.id
+            WHERE comments.answer_id=?";
+    return $this->db->query($query, $a_id)->result_array();
+  }
+
 }

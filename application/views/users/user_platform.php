@@ -10,15 +10,15 @@
 
 <title>Platform</title>
 <header>
-  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
+  <?php $this->load->view('header') ?>
+
   <?php if ($this->session->currentUser['role'] == 'ngo' ) { ?>
   <a href="/user/ngo/profile">Profile</a>
   <?php } else { ?>
   <a href="/user/engineer/profile">Profile</a>
 <?php } ?>
 
-  <a href="/" class="secondary-light-blue">Platform</a>
-  <button class="btn btn-donate">Donate</button>
+
   </header>
 
 </head>
