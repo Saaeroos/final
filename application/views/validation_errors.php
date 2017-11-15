@@ -3,10 +3,21 @@
 <?php } ?>
 
 <?php
-$err = validation_errors('<li>', '</li>');
-if( $err ) { ?>
+$errors = validation_errors('<li>', '</li>');
+
+$flash_error = $this->session->flashdata('error');
+
+if(!empty($flash_error)) {
+  $errors .= "<li>{$flash_error}</li>";
+}
+
+$uploads_errors = $this->upload->display_errors('<li>', '</li>');
+if(!empty($uploads_errors)) {
+  $errors .= $uploads_errors;
+}
+
+if ( $errors ) { ?>
 <ul class="list-unstyled alert alert-danger">
-  <?php echo $err; ?>
-  <?php echo $this->upload->display_errors('<li>', '</li>') ?>
+  <?php echo $errors; ?>
 </ul>
 <?php }

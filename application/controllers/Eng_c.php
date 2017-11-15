@@ -17,8 +17,6 @@ class Eng_c extends CI_Controller{
     $config['max_width']     = 2048;
     $config['max_height']    = 2048;
 
-    $this->load->library('upload', $config);
-
   $this->form_validation->set_rules('form_name',              'Name',                     'trim|required');
   $this->form_validation->set_rules('form_phone',             'Phone',                     'trim|required');
   $this->form_validation->set_rules('form_email',             'Email',                     'trim|required|valid_email|is_unique[engineers.email]');

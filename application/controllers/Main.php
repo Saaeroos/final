@@ -38,7 +38,24 @@ class Main extends CI_Controller{
 
   public function view_question($question_id) {
     $this->load->model('main_model');
-    $question_from_db = $this->main_model->m_get_one_question_by_id($question_id);
+
+    $question = $this->Main->get_question_by_id($question_id);
+    $answers = $this->Main->get_answers_by_q_id($question_id);
+
+    $answers_with_comments = [];
+    foreach ($answers as $answer) {
+      $answer['comments'] = $this->Main->get_comments_by_answer_id($answer['id']);;
+      $answers_with_comments[] = $answer;
+    }
+
+    $question['answers'] = $answers_with_comments;
+
+var_dump($question);exit;
+    $view_data = array(
+      'question' => $question
+    );
+
+    $this->load->view('question/view');
 
     $view_data = array('question' => $question_from_db);
     $this->load->view('questions/view_question', $view_data);
@@ -76,6 +93,7 @@ class Main extends CI_Controller{
         $this->load->view('users/user_login');
       }
       else{
+
         $username= $this->input->post('username',true);
         $password= $this->input->post('password',true);
         $this->load->model('User');
@@ -86,8 +104,10 @@ class Main extends CI_Controller{
                       redirect('/');
               }
               else{
-                $view_data = array('error_login' => 'Incorrect username or password.');
-                  $this->load->view('users/user_login', $view_data);
+                $view_data = array('error' => 'Incorrect username or password.');
+                $this->session->set_flashdata('error', 'Incorrect username or password.');
+                 // $this->load->view('users/user_login', $view_data);
+                 redirect('/user/login');
               }
       }
 
