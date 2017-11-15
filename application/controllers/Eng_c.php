@@ -103,6 +103,10 @@ public function c_add_comment_eng(){
     redirect("/home");
     }
 
+    public function engineer_profile(){
+        $this->load->view('users/engineer_profile');
+      }
+
 
     }
 
