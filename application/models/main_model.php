@@ -42,7 +42,7 @@ public function get_answers_by_q_id($q_id){
 public function get_comments_by_answer_id($a_id){
 $query = "SELECT engineer_id FROM comments
           WHERE answer_id=?";
-$result = return $this->db->query($query, $a_id)->row_array();
+$result = $this->db->query($query, $a_id)->row_array();
 
   if($result == NULL){
     $query="SELECT * FROM comments LEFT JOIN answers
