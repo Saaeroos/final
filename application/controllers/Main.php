@@ -114,15 +114,36 @@ class Main extends CI_Controller{
       $this->load->view('main', $data);
     }
 
-    public function c_get_one_question(){
-      $this->load->model('main_model');
+    // public function c_get_one_question(){
+    //   $this->load->model('main_model');
+    //   $q_id = $this->input->post('q_id');
+    //   $result = $this->main_model->m_get_one_question($q_id);
+    //   $data = array(
+    //           'one_questions' =>$result,
+    //           'cUser' => $current_user
+    //         );
+    //   $this->load->view('main', $data);
+    // }
+
+    public function c_detailed_question(){
+      $this->load->model('main');
       $q_id = $this->input->post('q_id');
-      $result = $this->main_model->m_get_one_question($q_id);
+      $question = $this->main_model->m_get_one_question_by_id($q_id);
+      $answers = $this->main_model->get_answers_by_q_id($q_id);
+      $answers_with_comments = [];
+
+      foreach($answers as $answer){
+          $answer['comments'] = $this->main_model->get_comments_by_answer_id($answers['id']);
+          $$answers_with_comments[] = $answer;
+      }
+      $question['answers'] = $answers_with_comments;
       $data = array(
-              'one_questions' =>$result,
+              'question' =>$question,
               'cUser' => $current_user
             );
-      $this->load->view('main', $data);
+      $this->load->view('view_detail', $data);
+
+
     }
 
 
