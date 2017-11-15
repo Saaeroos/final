@@ -7,5 +7,6 @@ $err = validation_errors('<li>', '</li>');
 if( $err ) { ?>
 <ul class="list-unstyled alert alert-danger">
   <?php echo $err; ?>
+  <?php echo $this->upload->display_errors('<li>', '</li>') ?>
 </ul>
 <?php }
