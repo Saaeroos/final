@@ -3,7 +3,6 @@
 <head>
 
 
-
  <meta charset="utf-8">
   <?php $this->load->view('admin/application/bootstrap') ?>
   <link rel="stylesheet" type="text/css" href="/assets/platform.css">
@@ -12,12 +11,21 @@
 <title>Platform</title>
 <header>
   <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
+  <?php if ($this->session->currentUser['role'] == 'ngo' ) { ?>
+  <a href="/user/ngo/profile">Profile</a>
+  <?php } else { ?>
+  <a href="/user/engineer/profile">Profile</a>
+<?php } ?>
+
   <a href="/" class="secondary-light-blue">Platform</a>
-  <a href="/user/Profile" class="secondary-light-blue">Profile</a>
   <button class="btn btn-donate">Donate</button>
   </header>
 
 </head>
+
+
+
+
 <body class="platform">
   <div class="container">
     <?php if ($user['role'] == 'ngo'){ ?>

@@ -13,16 +13,7 @@
 </style>
 </head>
 <body>
-
-  <header>
-    <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-    <nav>
-      <a href="/user/login" class="secondary-light-blue">Log In</a>
-      <a href="/user/signup" class="secondary-light-blue">Signup</a>
-      <button class="btn btn-donate">Donate</button>
-    </nav>
-
-  </header>
+<?php $this->load->view('header') ?>
 
   <div class="container">
 

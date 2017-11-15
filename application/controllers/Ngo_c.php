@@ -9,7 +9,11 @@ class Ngo_c extends CI_Controller{
   					redirect(base_url());
   		}
 
-  //login
+  //profile
+
+      public function ngo_profile(){
+        $this->load->view('users/ngo_profile');
+      }
 
 
 

@@ -10,6 +10,7 @@
   <title>Add your Question</title>
 </head>
 <body>
+
   <?php $this->load->view('header') ?>
 
   <div class="container">

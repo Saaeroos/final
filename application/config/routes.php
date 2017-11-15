@@ -12,6 +12,9 @@ $route['user/login']='main/loginprocess';
 $route['user/profile']= 'main/user_profile';
 $route['logout'] = 'main/logout';
 //$route['questions']='main/'
+
+$route['user/ngo/profile']='ngo_c/ngo_profile';
+$route['user/engineer/profile']= 'eng_c/engineer_profile';
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';
 
