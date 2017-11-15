@@ -10,14 +10,7 @@
   <title>User Sign Up</title>
 </head>
 <body>
-
-
-  <header>
-  <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-  <a href="/" class="secondary-light-blue">Platform</a>
-  <a href="/user/login" class="secondary-light-blue">Log In</a>
-  <button class="btn btn-donate">Donate</button>
-  </header>
+  <?php $this->load->view('header') ?>
 
   <div class="container">
     <div class="container-flud">

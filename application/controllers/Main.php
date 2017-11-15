@@ -4,9 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Main extends CI_Controller{
 
   public function homepage() {
+    $this->load->model('main_model');
+    $questions_from_db = $this->main_model->m_get_20_questions();
+
     if (empty($this->session->userdata('currentUser'))) {
-      $this->load->model('main_model');
-      $questions_from_db = $this->main_model->m_get_20_questions();
 
       $view_data = array(
         'questions_for_view' => $questions_from_db
@@ -14,8 +15,11 @@ class Main extends CI_Controller{
 
       $this->load->view('homepage', $view_data);
     } else {
+
+
       $view_data = array(
-        'user' => $this->session->userdata('currentUser')
+        'user' => $this->session->userdata('currentUser'),
+        'questions_for_view' => $questions_from_db
       );
 
       $this->load->view('users/user_platform', $view_data);

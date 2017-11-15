@@ -10,14 +10,7 @@
   <title>Add your Question</title>
 </head>
 <body>
-  <header>
-    <img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg">
-    <a href="/" class="secondary-light-blue">Platform</a>
-    <a href="/user/login" class="secondary-light-blue">Log In</a>
-    <a href="/user/signup" class="secondary-light-blue">Signup</a>
-    <button class="btn btn-donate">Donate</button>
-
-  </header>
+  <?php $this->load->view('header') ?>
 
   <div class="container">
     <?php $this->load->view('validation_errors') ?>
