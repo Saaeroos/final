@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <?php $this->load->view('admin/application/bootstrap') ?>
   <meta charset="utf-8">
-  <title>Admin: NGOs</title>
+  <title>Admin/Answers</title>
 </head>
 <body>
 
@@ -49,11 +49,12 @@
         <thead>
           <tr>
             <th scope="col">#id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Date of Sign Up</th>
+            <th scope="col">Content</th>
+            <th scope="col">created</th>
+            <th scope="col">Question ID</th>
+            <th scope="col">Answer ID</th>
+            <th scope="col">Engineer ID</th>
+            <th scope="col">Engineer name</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -61,20 +62,22 @@
           <tr>
              <?php foreach ($data as $item){ ?>
             <th scope="row"><?= $item['id']; ?></th>
+            <td><?= $item['c_content']; ?></td>
+            <td><?= $item['created_at']; ?></td>
+            <td><?= $item['question_id']; ?></td>
+            <td><?= $item['answer_id']; ?></td>
             <td><?= $item['name']; ?></td>
-            <td><?= $item['email']; ?></td>
-            <td><?= $item['phone']; ?></td>
-             <td><?= $item['created_at']; ?></td>
             <td>
-              <form method="post" action="<?= base_url(); ?> show_eng_detail">
-                  <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
+              <form method="post" action="<?= 'admin/edit/answer' ?>">
+                  <input type="hidden" name="a_text" value="<?= $item['a_content']; ?>">
+                  <input type="hidden" name="a_id" value="<?= $item['id']; ?>">
                   <input type="submit" name="Edit" class="btn btn-link" >
               </form>
               <form method="post" action="<?= base_url(); ?> eng_delete">
                 <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
                 <input type="submit" name="Delete" class="btn btn-link">
             </td>
-          <?php } ?>
+
 
 
         </tbody>
