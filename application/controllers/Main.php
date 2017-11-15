@@ -142,7 +142,29 @@ class Main extends CI_Controller{
               'cUser' => $current_user
             );
       $this->load->view('view_detail', $data);
+    }
 
+    public function c_show_profile_details(){
+      $this->load->model('main_model');
+      $current_user = $this->session->userdata('currentuser');
+      $id = $current_user['id'];
+      if($role == 'engineer'){
+
+        $result = $this->main_model->m_eng_details($id);
+        $data = array(
+                'result' =>$result,
+                'cUser' => $current_user
+              );
+       $this->load->view('users/engineer_profile', $data);
+      }
+      else{
+        $result = $this->main_model->m_ngo_details($id);
+        $data = array(
+                'result' =>$result,
+                'cUser' => $current_user
+              );
+       $this->load->view('users/ngo_profile', $data);
+      }
 
     }
 
