@@ -18,18 +18,30 @@
   <a href="/user/signup" class="secondary-light-blue">Signup</a>
   <button class="btn btn-donate">Donate</button>
   </header>
-
   <div class="container">
+ <?php
+      $err = validation_errors('<li>', '</li>');
+      if (isset($error_login)) {
+        $err .= '<li>'. $error_login . '</li>';
+      }
 
-    <form method="POST" action="platform">
+      if(!empty($err)) { ?>
+      <ul class="list-unstyled alert alert-danger">
+      <?php echo $err; ?>
+      </ul>
+  <?php } ?>
+
+
+
+    <form method="POST" action="/user/login">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter Username" name="username">
 
       </div>
       <div class="form-group">
         <label for="InputPassword1">Password</label>
-        <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="password">
       </div>
       <div class="form-check">
         <label class="form-check-label">

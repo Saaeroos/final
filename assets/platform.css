@@ -105,6 +105,11 @@ header nav a {
   margin-right: 15px;
 }
 
+.card-img-top {
+  max-height: 150px;
+  object-fit: cover;
+}
+
 header nav a:hover {
   color: #FF0053;
 }

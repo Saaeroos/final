@@ -4,13 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'main/homepage';
-$route['question/details']='main/question_detail';
-//Log In
-$route['user/login']= 'main/user_login';
-$route['user/platform']='main/loginprocess';
+// $route['platform']='main/user_platform';
+$route['questions/(:num)']='main/view_question/$1';
+$route['questions/(:num)/answer'] = 'main/answer_question/$1';
 
-$route['platform']='main/user_platform';
-
+$route['user/login']='main/loginprocess';
+$route['user/profile']= 'main/user_profile';
+$route['logout'] = 'main/logout';
+//$route['questions']='main/'
+///Questions
+$route['questions/add'] = 'ngo_c/add_question';
 
 //SignUp
 $route['user/signup']='main/signup';
