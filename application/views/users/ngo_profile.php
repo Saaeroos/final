@@ -8,61 +8,52 @@
   <title>Your Profile</title>
 </head>
 <body>
-  <header>
-
-
-    <?php $this->load->view('header') ?>
-
-
-
-
-  </header>
-
+  <?php $this->load->view('header') ?>
 
       <div class="container-fluid col-md-9">
         <dl class="row">
           <dt class="col-sm-2">NGO name:</dt>
-          <dd class="col-sm-7">Medicin Sans Frontier</dd>
+          <dd class="col-sm-7"><?php $cUser ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2 ">Contact Person:</dt>
-          <dd class="col-sm-7">Alan Cook</dd>
+          <dd class="col-sm-7"><?php ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Contact Person</dt>
-          <dd class="col-sm-7">Alan Cook</dd>
+          <dd class="col-sm-7"><?php ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Username:</dt>
-          <dd class="col-sm-7"><p>alancook</p></dd>
+          <dd class="col-sm-7"><p><?php ?></p></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Contact Email:</dt>
-          <dd class="col-sm-7">acook@gmail.com</dd>
+          <dd class="col-sm-7"><?php ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Phone</dt>
-          <dd class="col-sm-7">+31624567890</dd>
+          <dd class="col-sm-7"><?php ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Field of Activities:</dt>
-          <dd class="col-sm-7">Lorem ipsum dolor sit amet</dd>
+          <dd class="col-sm-7"><?php ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Website:</dt>
-          <dd class="col-sm-7">http://www.whatevs.com</a></dd>
+          <dd class="col-sm-7"><?php ?></a></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Picture:</dt>
-          <dd class="col-sm-7">
+          <dd class="col-sm-7"><?php ?>
             <img src="http://www.desicomments.com/dc/21/48574/485741.jpg" class="rounded" alt="..." width="200" height="200">
           </dd>
         </dl>

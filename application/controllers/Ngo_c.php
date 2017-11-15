@@ -9,18 +9,6 @@ class Ngo_c extends CI_Controller{
   					redirect(base_url());
   		}
 
-  //profile
-
-      public function ngo_profile(){
-        $this->load->view('users/ngo_profile');
-      }
-
-
-
-
-
-
-
     //register
 		public function ngo_register(){
 

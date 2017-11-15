@@ -10,11 +10,13 @@ $route['questions/(:num)/answer'] = 'main/answer_question/$1';
 
 $route['user/login']='main/loginprocess';
 $route['user/profile']= 'main/user_profile';
+
 $route['logout'] = 'main/logout';
 //$route['questions']='main/'
 
-$route['user/ngo/profile']='ngo_c/ngo_profile';
+$route['user/ngo/profile']='main/c_show_profile_details';
 $route['user/engineer/profile']= 'eng_c/engineer_profile';
+// $route['user/engineer/profile/edit']
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';
 

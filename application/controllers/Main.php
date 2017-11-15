@@ -126,6 +126,7 @@ class Main extends CI_Controller{
     // }
 
     public function c_detailed_question(){
+      //for platform
       $this->load->model('main');
       $q_id = $this->input->post('q_id');
       $question = $this->main_model->m_get_one_question_by_id($q_id);
@@ -146,9 +147,9 @@ class Main extends CI_Controller{
 
     public function c_show_profile_details(){
       $this->load->model('main_model');
-      $current_user = $this->session->userdata('currentuser');
+      $current_user = $this->session->userdata('currentUser');
       $id = $current_user['id'];
-      if($role == 'engineer'){
+      if($current_user['role'] == 'engineer'){
 
         $result = $this->main_model->m_eng_details($id);
         $data = array(
@@ -157,6 +158,7 @@ class Main extends CI_Controller{
               );
        $this->load->view('users/engineer_profile', $data);
       }
+
       else{
         $result = $this->main_model->m_ngo_details($id);
         $data = array(

@@ -16,35 +16,38 @@
   </header>
 
 
+
+
       <div class="container-fluid col-md-9">
         <dl class="row">
           <dt class="col-sm-2">Name:</dt>
-          <dd class="col-sm-7">Emily Han</dd>
+          <dd class="col-sm-7"><?php echo $result['name'] ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2 ">Contact Person:</dt>
-          <dd class="col-sm-7">Alan Cook</dd>
+          <dd class="col-sm-7"><?php echo $data['contact_person
+          '] ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Username:</dt>
-          <dd class="col-sm-7"><p>emilyhan</p></dd>
+          <dd class="col-sm-7"><?php echo $data['username'] ?></p></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Your Email:</dt>
-          <dd class="col-sm-7">emilyhan@gmail.com</dd>
+          <dd class="col-sm-7"><?php echo $data['your_email'] ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Phone</dt>
-          <dd class="col-sm-7">+31624567890</dd>
+          <dd class="col-sm-7"><?php echo $data['phone'] ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Field of Expertise:</dt>
-          <dd class="col-sm-7">Lorem ipsum dolor sit amet</dd>
+          <dd class="col-sm-7"><?php echo $data['field_of expertise'] ?></dd>
         </dl>
 
         <dl class="row">
@@ -54,14 +57,13 @@
 
         <dl class="row">
           <dt class="col-sm-2">About Me:</dt>
-          <dd class="col-sm-7">Nunc accumsan ac nisi id scelerisque. Etiam sed nisi rutrum, tristique mi in, ultricies nisl. Praesent eget ipsum scelerisque, placerat ipsum eu, bibendum lorem. In sem ipsum, porta ut accumsan et, sodales congue nisi. Nunc suscipit enim vitae consequat tristique.
-
+          <dd class="col-sm-7"><?php echo $data['field_of expertise'] ?>
           </dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Picture:</dt>
-          <dd class="col-sm-7">
+          <dd class="col-sm-7"><?php echo $data['picture'] ?>
             <img src="https://study.uwa.edu.au/-/media/UWAFS/Teasers/ImgBtn-ElectricalEngineer.jpg" class="rounded" alt="..." width="200" height="200">
           </dd>
         </dl>

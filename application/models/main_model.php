@@ -65,3 +65,4 @@ $result = $this->db->query($query, $a_id)->row_array();
 
 }
 
+}
