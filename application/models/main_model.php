@@ -65,17 +65,3 @@ $result = $this->db->query($query, $a_id)->row_array();
 
 }
 
-public function m_eng_details($id){
-  $query = "SELECT * FROM engineers
-            WHERE engineers.id=?";
-  return $this->db->query($query, $id)->row_array();
-}
-
-public function m_ngo_details($id){
-  $query = "SELECT * FROM ngos
-            WHERE ngos.id=?";
-  return $this->db->query($query, $id)->row_array();
-}
-
-
-}
