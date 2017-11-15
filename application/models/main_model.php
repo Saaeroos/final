@@ -32,12 +32,14 @@ public function m_get_one_question_by_id($id){
   return $this->db->query($query, array($id))->row_array();
 }
 
+
 public function get_answers_by_q_id($q_id){
   $query = "SELECT * FROM answers LEFT JOIN engineers
             ON answers.engineer_id=engineers.id
             WHERE answers.question_id=?";
  return $this->db->query($query, $q_id)->result_array();
 }
+
 
 public function get_comments_by_answer_id($a_id){
 $query = "SELECT engineer_id FROM comments
@@ -74,5 +76,6 @@ public function m_ngo_details($id){
             WHERE ngos.id=?";
   return $this->db->query($query, $id)->row_array();
 }
+
 
 }
