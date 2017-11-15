@@ -10,11 +10,11 @@
 
   <header>
      <div  id="admin" class="container-fluid">
-      
-  
+
+
         <div><h2>Admin Mark</h2></div>
-        
-        
+
+
 
     </div>
 
@@ -25,9 +25,9 @@
         <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
       </ul>
 
-    </div> 
+    </div>
 
-    
+
 </header>
 
 
@@ -59,19 +59,19 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Alan Cook</td>
-            <td>alancook</td>
-            <td>alancook@example.com</td>
-            <td>023456789</td>
-             <td>15 November 2017</td>
+             <?php foreach ($data as $item){ ?>
+            <th scope="row"><?= $item['id']; ?></th>
+            <td><?= $item['name']; ?></td>
+            <td><?= $item['email']; ?></td>
+            <td><?= $item['phone']; ?></td>
+             <td><?= $item['created_at']; ?></td>
             <td>
-              <button type="button" class="btn btn-link">Edit</button>
-              <button type="button" class="btn btn-link">Delete</button>
+              <button type="button" class="btn btn-link" name="eng_id" value="<?= $item['id']; ?>">Edit</button>
+              <button type="button" class="btn btn-link" name="eng_id" value="<?= $item['id']; ?>">Delete</button>
             </td>
-              
-         
-          
+
+
+
         </tbody>
       </table>
   </section>

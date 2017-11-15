@@ -2,8 +2,7 @@
 
 class User extends CI_Model {
   public function loginByUsernamePass($username, $password) {
-    $query = "
-      SELECT id, username, password, 'engineer' AS role
+    $query = "SELECT id, username, password, 'engineer' AS role
       FROM engineers
       WHERE username = ?
       AND password = ?
