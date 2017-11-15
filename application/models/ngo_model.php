@@ -41,6 +41,17 @@ class Ngo_model extends CI_Model{
                         $data['ngo_id']);
         $this->db->query($query, $values);
       }
+
+      public function m_update_ngo($data) {
+        $query = "UPDATE ngos SET (name, contact_person, contact_email,
+                    fields_of_activity, website, username, password)
+                  VALUES(?,?,?,?,?,?,?)";
+
+        $values = array($data['c_name'], $data['c_contact_person'],
+                      $data['c_contact_email'], $data['c_fields_activity'],
+                      $data['c_website'], $data['c_username'], $data['c_password']);
+        $this->db->query($query, $data);
+      }
 }
 
 

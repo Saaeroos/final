@@ -119,6 +119,38 @@ class Ngo_c extends CI_Controller{
         redirect("/home");
         }
 
+
+        //15-11-2017 mohamed
+            public function ngo_edit_profile(){
+              $this->load->model('ngo_model');
+              $cUser = $this->session->userdata('currentUser');
+              $ngo_id = $cUser['id'];
+              $result = $this->eng_model->select_one_ngo($ngo_id);
+              $data = array(
+                    'result'    => $result,
+                    'cUser'		=> $cUser
+                      );
+              $this->load->view('ngos/view_ngo', $data);
+            }
+
+            public function c_update_ngo(){
+              $data = array(
+        				'c_name'              => $this->input->post('form_name',true),
+        				'c_contact_person'    => $this->input->post('form_contact_person',true),
+        				'c_contact_email'    => $this->input->post('form_contact_email',true),
+                'c_fields_activity'   => $this->input->post('form_fields_activity',true),
+        				'c_website'           => $this->input->post('form_website',true),
+                'c_username'          => $this->input->post('form_username',true),
+                'c_password'          => $this->input->post('form_password',true)
+                );
+
+                $this->session->set_flashdata('success', 'Data successfully updated');
+                $this->Eng_model->m_update_ngo( $data );
+                redirect(base_url('register'));
+                  }
+            }
+
+
 }
 
 
