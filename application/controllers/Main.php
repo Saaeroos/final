@@ -42,6 +42,30 @@ class Main extends CI_Controller{
     $this->load->view('questions/view_question', $view_data);
   }
 
+  public function answer_question($question_id) {
+    $this->load->model('main_model');
+    $this->load->model('Eng_model');
+    $question_from_db = $this->main_model->m_get_one_question_by_id($question_id);
+
+    $this->form_validation->set_rules('a_content', "answer", 'required|min_length[50]');
+
+    if ($this->form_validation->run() == FALSE) {
+      $view_data = array(
+        'question' => $question_from_db
+      );
+      $this->load->view('questions/answer', $view_data);
+    } else {
+      $new_answer = array(
+        'c_a_content' => $this->input->post('a_content', true),
+        'c_q_id'  => $question_id,
+        'c_eng_id' => $this->session->currentUser['id'],
+      );
+      $this->Eng_model->m_add_answer($new_answer);
+      $this->session->set_flashdata('success', 'Thank you for answering this question');
+      redirect('/questions/'.$question_id);
+    }
+  }
+
     public function loginprocess(){
       $this->form_validation->set_rules('username', "Username", 'required');
       $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');

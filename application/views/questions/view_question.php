@@ -12,6 +12,7 @@
 <?php $this->load->view('header') ?>
 
 <div class="container">
+  <?php $this->load->view('validation_errors') ?>
   <div class="container-fluid">
     <h1>Question from NGO</h1>
       <h2><?php echo $question['title']; ?></h2>
@@ -25,6 +26,9 @@
 
       <h4>When needed: <?php echo $question['when_needed'] ?></h4>
       <div>
+      <?php if ($this->session->currentUser['role'] == 'engineer'){ ?>
+        <a class="btn btn-primary" href="/questions/<?php echo $question['question_id'] ?>/answer">I take this question</a>
+      <?php } ?>
         <div>
         <h4>Answers</h4>
         <h4>Posted By: Engineer Alan Cook</h4>

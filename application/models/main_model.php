@@ -26,8 +26,8 @@ public function m_get_one_question($id){
 }
 
 public function m_get_one_question_by_id($id){
-  // the $id was not used yet in the query
-  $query = "SELECT * FROM questions LEFT JOIN ngos
+  // the $id was not used yet in the query above
+  $query = "SELECT *, questions.id AS question_id FROM questions LEFT JOIN ngos
             ON questions.ngo_id=ngos.id WHERE questions.id = ?";
   return $this->db->query($query, array($id))->row_array();
 }

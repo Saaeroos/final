@@ -6,7 +6,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['default_controller'] = 'main/homepage';
 // $route['platform']='main/user_platform';
 $route['questions/(:num)']='main/view_question/$1';
-//Log In
+$route['questions/(:num)/answer'] = 'main/answer_question/$1';
+
 $route['user/login']='main/loginprocess';
 $route['user/profile']= 'main/user_profile';
 $route['logout'] = 'main/logout';
