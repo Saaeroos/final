@@ -32,6 +32,11 @@ public function m_get_one_question_by_id($id){
   return $this->db->query($query, array($id))->row_array();
 }
 
+public function get_question_by_id($id){
+  $query = "SELECT * FROM questions WHERE id = ?";
+  return $this->db->query($query, array($id))->row_array();
+}
+
 
 public function get_answers_by_q_id($q_id){
   $query = "SELECT * FROM answers LEFT JOIN engineers
@@ -50,7 +55,7 @@ $result = $this->db->query($query, $a_id)->row_array();
     $query="SELECT * FROM comments LEFT JOIN answers
             ON comments.answer_id=answers.id
             LEFT JOIN ngos
-            ON commnets.ngo_id=ngos.id
+            ON comments.ngo_id=ngos.id
             WHERE comments.answer_id=?";
     return $this->db->query($query, $a_id)->result_array();
   }
@@ -58,7 +63,7 @@ $result = $this->db->query($query, $a_id)->row_array();
     $query="SELECT * FROM comments LEFT JOIN answers
             ON comments.answer_id=answers.id
             LEFT JOIN engineers
-            ON commnets.engineer_id=engineers.id
+            ON comments.engineer_id=engineers.id
             WHERE comments.answer_id=?";
     return $this->db->query($query, $a_id)->result_array();
   }
@@ -76,4 +81,25 @@ $result = $this->db->query($query, $a_id)->row_array();
     $values = array($id);
     return $this->db->query($query, $values)->row_array();
   }
+
+    public function get_comments_for_answer($answer_id){
+      $query = "  SELECT  comments.id, comments.c_content,
+        comments.created_at,ngos.name AS ngo_name,    ngos.contact_person AS ngo_contact_person,   engineers.name AS engineer_name
+        FROM comments
+        LEFT JOIN answers ON comments.answer_id =answers.id LEFT JOIN ngos ON comments.ngo_id   =ngos.id
+        LEFT JOIN engineers ON comments.engineer_id= engineers.id WHERE comments.answer_id = ?";
+
+      return $this->db->query($query, $answer_id)->result_array();
+    }
+
+public function get_answers_for_question($question_id){
+  $query = "SELECT answers.id, answers.a_content,answers.created_at,  engineers.name AS engineer_name
+    FROM answers
+    LEFT JOIN engineers ON answers.engineer_id=engineers.id
+    WHERE answers.question_id=?
+  ";
+
+ return $this->db->query($query, $question_id)->result_array();
+}
+
 }

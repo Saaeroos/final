@@ -64,28 +64,25 @@ h3, .h3 {
   color: rgba(83, 83, 98, 1);
 }
 
+.bg-primary {
+  background-color: #0090FF !important;
+}
+
+.bg-secondary {
+  background-color: #F4F4F4 !important;
+}
 
 .btn-primary {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
-  color: #fff;
+  background-color: #0090FF !important;
 }
 
 .btn-outline-primary {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
   color: #0090FF
 }
 
 .btn-donate {
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 16px;
   color: #fff;
   background-color: #FF0053;
-  height: 32px;
 }
 
  header{
@@ -112,4 +109,8 @@ header nav a {
 
 header nav a:hover {
   color: #FF0053;
+}
+
+#answers {
+  margin-top: 40px;
 }

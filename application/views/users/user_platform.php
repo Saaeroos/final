@@ -23,6 +23,7 @@
   <?php } ?>
   <div class="card-body">
     <h4 class="card-title"><?php echo $question['title'] ; ?></h4>
+    <h6 class="mt-0 mb-1"><strong>Posted by:</strong><?php echo $question['name'] ?></h6>
     <p class="card-text"><?php echo $question['q_content']?></p>
     <a  href="/questions/<?php echo $question['question_id']; ?>" class="btn btn-primary">View Question</a>
   </div>
@@ -30,20 +31,9 @@
 
 <?php } ?>
 
-<ul class="list-unstyled">
-  <li class="media">
-    <img class="mr-3" src="..." alt="Generic placeholder image">
-    <div class="media-body">
-      <h4 class="mt-0 mb-1">List-based media object</h4>
-      <h6 class="mt-0 mb-1"><strong>Posted by:</strong> NGO Red cross</h6>
-      <h6 class="mt-0 mb-1"><strong>Need answer:</strong> Next Month</h6>
-      <h6 class="mt-0 mb-1">Posted at: 20 November 2017</h6>
-      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
 
 
-      <button type="submit" class="btn btn-primary">Details</button>
 
-    </div>
 
 </div>
 

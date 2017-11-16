@@ -29,7 +29,7 @@ class Eng_model extends CI_Model{
   public function m_add_comment_eng($data){
     $query = "INSERT INTO comments (c_content, answer_id, engineer_id)
               VALUES (?,?,?)";
-    $query = array($data['c_comment_text'], $data['a_id'],
+    $values = array($data['c_comment_text'], $data['a_id'],
                     $data['eng_id']);
     $this->db->query($query, $values);
   }

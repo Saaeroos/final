@@ -18,7 +18,6 @@ class Main extends CI_Controller{
       $this->load->view('homepage', $view_data);
     } else {
 
-
       $view_data = array(
         'user' => $this->session->userdata('currentUser'),
         'questions_for_view' => $questions_from_db
@@ -39,25 +38,48 @@ class Main extends CI_Controller{
   public function view_question($question_id) {
     $this->load->model('main_model');
 
-    $question = $this->Main->get_question_by_id($question_id);
-    $answers = $this->Main->get_answers_by_q_id($question_id);
+    $question =$this->main_model->get_question_by_id($question_id);
+    $question['ngo']=  $this->main_model->m_ngo_details($question['ngo_id']);
+    $answers= $this->main_model->get_answers_for_question($question_id);
 
-    $answers_with_comments = [];
-    foreach ($answers as $answer) {
-      $answer['comments'] = $this->Main->get_comments_by_answer_id($answer['id']);;
+    $answers_with_comments=array();
+    foreach ($answers as $answer){
+      $answer['comments'] = $this->main_model->get_comments_for_answer($answer['id']);
       $answers_with_comments[] = $answer;
     }
-
     $question['answers'] = $answers_with_comments;
 
-var_dump($question);exit;
     $view_data = array(
       'question' => $question
     );
 
-    $this->load->view('question/view');
+    $this->form_validation->set_rules('comment', "comment", 'min_length[10]');
+    if($this->form_validation->run() == FALSE) {
+      $this->load->view('questions/view_question', $view_data);
+    }
+      else
+      {
+      if( $this->session->currentUser['role'] == 'engineer'){
+        $comment = array(
+          'c_comment_text' => $this->input->post('comment'),
+          'a_id' => $this->input->post('answer_id'),
+          'eng_id' => $this->session->currentUser['id']
+        );
+        $this->load->model('Eng_model');
+        $this->Eng_model->m_add_comment_eng($comment);
+      }
+        else {
+        $comment = array(
+          'c_comment_text' => $this->input->post('comment'),
+          'a_id' => $this->input->post('answer_id'),
+          'ngo_id' => $this->session->currentUser['id']);
 
-    $view_data = array('question' => $question_from_db);
+          $this->load->model('Ngo_model');
+          $this->Ngo_model->m_add_comment_ngo($comment);
+      }
+      redirect( '/questions/'  .$question['id']);
+    }
+
     $this->load->view('questions/view_question', $view_data);
   }
 
@@ -73,7 +95,8 @@ var_dump($question);exit;
         'question' => $question_from_db
       );
       $this->load->view('questions/answer', $view_data);
-    } else {
+    }
+    else {
       $new_answer = array(
         'c_a_content' => $this->input->post('a_content', true),
         'c_q_id'  => $question_id,
