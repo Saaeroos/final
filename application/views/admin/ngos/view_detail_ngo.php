@@ -37,42 +37,32 @@
       <div class="container-fluid col-md-9">
         <dl class="row">
           <dt class="col-sm-2">NGO name:</dt>
-          <dd class="col-sm-7">Medicin Sans Frontier</dd>
+          <dd class="col-sm-7"><?= $data['name']; ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2 ">Contact Person:</dt>
-          <dd class="col-sm-7">Alan Cook</dd>
-        </dl>
-
-        <dl class="row">
-          <dt class="col-sm-2">Contact Person</dt>
-          <dd class="col-sm-7">Alan Cook</dd>
+          <dd class="col-sm-7"><?= $data['contact_person']; ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Username:</dt>
-          <dd class="col-sm-7"><p>alancook</p></dd>
+          <dd class="col-sm-7"><p><?= $data['username']; ?></p></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Contact Email:</dt>
-          <dd class="col-sm-7">acook@gmail.com</dd>
-        </dl>
-
-        <dl class="row">
-          <dt class="col-sm-2">Phone</dt>
-          <dd class="col-sm-7">+31624567890</dd>
+          <dd class="col-sm-7"><?= $data['contact_email']; ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Field of Activities:</dt>
-          <dd class="col-sm-7">Lorem ipsum dolor sit amet</dd>
+          <dd class="col-sm-7"><?= $data['fields_of_activity']; ?></dd>
         </dl>
 
         <dl class="row">
           <dt class="col-sm-2">Website:</dt>
-          <dd class="col-sm-7">http://www.whatevs.com</a></dd>
+          <dd class="col-sm-7"><?= $data['website']; ?></a></dd>
         </dl>
 
         <dl class="row">
@@ -84,8 +74,14 @@
 
         <div class="row">
           <nav>
-            <a href="/admin/ngos" class="btn btn-primary">Back NGO list</a>
-            <a href="/admin/ngos/delete/1<?php //echo $id ?>" class="btn btn-primary">Delete</a>
+            <form method="post" action="/admin/engineers">
+              <input type="hidden" name="ngo_id" value="<?= $data['id']; ?>">
+              <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+            </form>
+            <form method="post" action="/admin/pending/ngo/approve">
+                <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
+                <input type="submit" value="Approve" class="btn btn-success btn-sm" >
+            </form>
           </nav>
         </div>
       </div>

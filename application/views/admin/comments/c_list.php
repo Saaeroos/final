@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <?php $this->load->view('admin/application/bootstrap') ?>
   <meta charset="utf-8">
-  <title>Admin: Questions</title>
+  <title>Admin: Comments</title>
 </head>
 <body>
 
@@ -28,15 +28,14 @@
       </section>
 
       <section id="main" class="col-md-9">
-        <div><h1>List of Questions</h1></div>
+        <div><h1>List of Comments</h1></div>
 
         <table class="table table-striped">
           <thead>
             <tr>
               <th scope="col">#ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Question</th>
-              <th scope="col">NGO Name</th>
+              <th scope="col">Comment</th>
+              <th scope="col">Name</th>
               <th scope="col">Created</th>
               <th scope="col">Actions</th>
             </tr>
@@ -44,14 +43,13 @@
           <tbody>
             <tr>
               <?php foreach($data as $item){ ?>
-              <th scope="row"><?= $item['q_id']?></th>
-              <td><?= $item['title']?></td>
-              <td><?= $item['q_content']?></td>
-              <td><?= $item['ngoname']?></td>
+              <th scope="row"><?= $item['c_id']?></th>
+              <td><?= $item['c_content']?></td>
+              <td><?= $item['name']?></td>
               <td><?= $item['created_at']?></td>
               <td>
-                <form method="post" action="/admin/question/delete">
-                  <input type="hidden" name="q_id" value="<?= $item['q_id']; ?>">
+                <form method="post" action="/admin/comment/delete">
+                  <input type="hidden" name="c_id" value="<?= $item['c_id']; ?>">
                   <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                 </form>
               </td>

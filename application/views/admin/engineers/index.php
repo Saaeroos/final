@@ -64,16 +64,18 @@
             <td><?= $item['name']; ?></td>
             <td><?= $item['email']; ?></td>
             <td><?= $item['phone']; ?></td>
+            <td><?= $item['created_at']; ?></td>
              <td><?= $item['created_at']; ?></td>
             <td>
-              <form method="post" action="<?= base_url(); ?> show_eng_detail">
+              <form method="post" action="/admin/engineer/details">
                   <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
-                  <input type="submit" name="Edit" class="btn btn-link" >
+                  <input type="submit" value="Details" class="btn btn-primary btn-sm" >
               </form>
-              <form method="post" action="<?= base_url(); ?> eng_delete">
+              <form method="post" action="/admin/engineer/delete">
                 <input type="hidden" name="eng_id" value="<?= $item['id']; ?>">
-                <input type="submit" name="Delete" class="btn btn-link">
+                <input type="submit" value="Delete" class="btn btn-danger btn-sm">
             </td>
+          </tr>
           <?php } ?>
 
 
