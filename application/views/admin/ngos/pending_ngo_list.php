@@ -51,24 +51,22 @@
               <td><?= $item['username']; ?></td>
               <td><?= $item['website']; ?></td>
               <td>
-                <form method="post" action="<?= base_url(); ?> c_show_details_ngo">
+                <form method="post" action="/admin/ngo/pending/details">
                     <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
-                    <input type="submit" name="Details" class="btn btn-link" >
+                    <input type="submit" value="Details" class="btn btn-primary btn-sm" >
                 </form>
-                <form method="post" action="<?= base_url(); ?> c_approve_ngo">
+                <form method="post" action="/admin/pending/ngo/approve">
                     <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
-                    <input type="submit" name="Approve" class="btn btn-link" >
+                    <input type="submit" value="Approve" class="btn btn-success btn-sm" >
                 </form>
-                <form method="post" action="<?= base_url(); ?> c_delete_ngo">
+                <form method="post" action="/admin/ngo/delete">
                   <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
-                  <input type="submit" name="Delete" class="btn btn-link">
+                  <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                </form>
               </td>
 
-                <a href="/admin/ngos/view/1<?php // echo $ngo['id'] ?>" class="btn btn-link">View</a>
-                <a href="/admin/ngos/delete/1<?php // echo $ngo['id'] ?>" class="btn btn-link">Delete</a>
-                </form>
-              </td>
             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </section>

@@ -15,9 +15,9 @@
     <a class="nav-link" href="/admin/comments">Comments</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/admin/engineer-signups">Pending Engineer Signups</a>
+    <a class="nav-link" href="/admin/pending/engineer">Pending Engineer Signups</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/admin/ngo-signups">Pending NGO Signups</a>
+    <a class="nav-link" href="/admin/pending/ngos">Pending NGO Signups</a>
   </li>
 </ul>

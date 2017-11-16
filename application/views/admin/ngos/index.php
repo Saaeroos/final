@@ -49,20 +49,18 @@
               <td><?= $item['contact_email']; ?></td>
               <td><?= $item['website']; ?></td>
               <td>
-                <form method="post" action="<?= base_url(); ?> show_ngo_detail">
-                    <input type="hidden" name="ngo__id" value="<?= $item['id']; ?>">
-                    <input type="submit" name="Edit" class="btn btn-link" >
+                <form method="post" action="/admin/ngo/details">
+                    <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
+                    <input type="submit" value="Details" class="btn btn-primary btn-sm" >
                 </form>
-                <form method="post" action="<?= base_url(); ?> c_delete_ngo">
+                <form method="post" action="/admin/engineers">
                   <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
-                  <input type="submit" name="Delete" class="btn btn-link">
+                  <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                </form>
               </td>
 
-                <a href="/admin/ngos/view/1<?php // echo $ngo['id'] ?>" class="btn btn-link">View</a>
-                <a href="/admin/ngos/delete/1<?php // echo $ngo['id'] ?>" class="btn btn-link">Delete</a>
-                </form>
-              </td>
             </tr>
+            <?php } ?>
           </tbody>
         </table>
       </section>

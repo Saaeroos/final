@@ -40,76 +40,75 @@ class Admin_c extends CI_Controller{
     $this->load->view('admin/questions/view_question');
   }
 
-  public function c_list_of_questions(){
-    //$this->load->model('admin_model');
-    //$result = $this->admin_model->m_list_of_questions();
-    //$data = array('data' => $result);
-     $data = array();
-    $this->load->view('admin/questions/index', $data);
-  }
+  // public function c_list_of_questions(){
+  //   //$this->load->model('admin_model');
+  //   //$result = $this->admin_model->m_list_of_questions();
+  //   //$data = array('data' => $result);
+  //    $data = array();
+  //   $this->load->view('admin/questions/index', $data);
+  // }
 
   public function c_list_of_ngo(){
-    $this->load->model('Admin_model');
+    $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_ngo();
     $data = array('data' => $result);
-    $this->load->view('list_of_ngo', $data);
+    $this->load->view('admin/ngos/index', $data);
   }
 
   public function c_list_of_eng(){
-    $this->load->model('Admin_model');
+    $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_eng();
     $data = array('data' => $result);
-    $this->load->view('list_of_eng', $data);
+    $this->load->view('admin/engineers/index', $data);
   }
 
-  //public function c_list_of_questions(){
-  //   $this->load->model('Admin_model');
-  //   $result = $this->admin_model->m_list_of_questions();
-  //   $data = array('data' => $result);
-  //, $data);
-  //$this->load->view('admin/questions/view_question');
- // }
+  public function c_list_of_questions(){
+    $this->load->model('admin_model');
+    $result = $this->admin_model->m_list_of_questions();
+    $data = array('data' => $result);
+  $this->load->view('admin/questions/index', $data);
+ }
 
   public function c_list_of_answers(){
-    $this->load->model('Admin_model');
-    $result = $this->Admin_model->m_list_of_answers();
+    $this->load->model('admin_model');
+    $result = $this->admin_model->m_list_of_answers();
     $data = array('data' => $result);
-    $this->load->view('list_of_answers', $data);
+    $this->load->view('admin/answers/a_list', $data);
   }
 
   public function c_list_of_comments(){
-    $this->load->model('Admin_model');
-    $result = $this->Admin_model->m_list_of_comments();
+    $this->load->model('admin_model');
+    $result = $this->admin_model->m_list_of_comments();
     $data = array('data' => $result);
-    $this->load->view('list_of_comments', $data);
+    $this->load->view('admin/comments/c_list', $data);
   }
 //changed function name for ngo list
 
   public function c_list_of_ngo_newforms(){
     $this->load->model('admin_model');
-    $result = $this->Admin_model->m_list_of_ngo_newforms();
+    $result = $this->admin_model->m_list_of_ngo_newforms();
     $data = array('data' => $result);
-    $this->load->view('list_of_ngo_forms', $data);
+    $this->load->view('admin/ngos/pending_ngo_list', $data);
   }
 
   public function c_list_of_eng_newforms(){
     $this->load->model('admin_model');
-    $result = $this->Admin_model->m_list_of_eng_newforms();
+    $result = $this->admin_model->m_list_of_eng_newforms();
     $data = array('data' => $result);
-    $this->load->view('list_of_eng_forms', $data);
+    $this->load->view('admin/engineers/pending_eng_list', $data);
   }
 
   //need some work
   public function c_platform_all_question(){
     $this->load->model('admin_model');
-    $result = $this->Admin_model->m_platform_question();
+    $result = $this->admin_model->m_platform_question();
     $data = array('data' => $result);
     $this->load->view('list_of_eng_forms', $data);
   }
 
   public function c_platform_detailed_q(){
-    $this->load->model('Admin_model');
-    $result = $this->Admin_model->m_platform_detailed_q();
+    $this->load->model('admin_model');
+    $result = $this->admin_model->m_platform_detailed_q();
     $data = array('data' => $result);
     $this->load->view('list_of_eng_forms', $data);
   }
@@ -127,28 +126,28 @@ class Admin_c extends CI_Controller{
 
       public function c_delete_eng(){
   			   $id = $this->input->post('eng_id');
-  			      $this->load->model('Admin_model');
-  			         $this->Admin_model->m_delete_eng($id);
-  			         redirect('home');
+  			      $this->load->model('admin_model');
+  			         $this->admin_model->m_delete_eng($id);
+  			         redirect('/admin/engineers');
   		}
 
       public function c_delete_question(){
-    			  $id = $this->input->post('question_id');
-    			  $this->load->model('Admin_model');
-    			  $this->Admin_model->m_delete_question($id);
-    			  redirect('home');
+    			  $id = $this->input->post('q_id');
+    			  $this->load->model('admin_model');
+    			  $this->admin_model->m_delete_question($id);
+    			  redirect('/admin/questions');
     	}
       public function c_delete_answer(){
-            $id = $this->input->post('answer_id');
-            $this->load->model('Admin_model');
-            $this->Admin_model->m_delete_answer($id);
-            redirect('home');
+            $id = $this->input->post('a_id');
+            $this->load->model('admin_model');
+            $this->admin_model->m_delete_answer($id);
+            redirect('/admin/answers');
       }
       public function c_delete_comment(){
-            $id = $this->input->post('comments_id');
-            $this->load->model('Admin_model');
-            $this->Admin_model->m_delete_comment($id);
-            redirect('home');
+            $id = $this->input->post('c_id');
+            $this->load->model('admin_model');
+            $this->admin_model->m_delete_comment($id);
+            redirect('/admin/comments');
       }
 
 
@@ -156,7 +155,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_question(){
-				$this->load->model('Admin_model');
+				// $this->load->model('admin_model');
 				$data = array(
 					           'q_text'    =>  $this->input->post('q_text'),
 					           'q_id' =>	$this->input->post('q_id')
@@ -172,11 +171,11 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/question');
 			     }
 			     else {
-			          $this->load->model('Admin_model');
+			          $this->load->model('admin_model');
 			          $q_content = $this->input->post('updated_q');
 			          $q_id = $this->input->post('q_id');
 			          $array= array('q_content' => $q_content, 'q_id' => $q_id);
-			          $this->Admin_model->m_update_question($array);
+			          $this->admin_model->m_update_question($array);
 			             redirect('admin/questions');
 		      }
 	    }
@@ -199,11 +198,11 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/answer');
 			     }
 			     else {
-			          $this->load->model('Admin_model');
+			          $this->load->model('admin_model');
 			          $a_content = $this->input->post('updated_a');
 			          $a_id = $this->input->post('a_id');
 			          $array= array('a_content' => $a_content, 'a_id' => $a_id);
-			          $this->Admin_model->m_update_answer($array);
+			          $this->admin_model->m_update_answer($array);
 			             redirect('admin/asnwers');
 		      }
 	    }
@@ -226,27 +225,43 @@ class Admin_c extends CI_Controller{
               $this->load->view('admin/edit/comment');
 			     }
 			     else {
-			          $this->load->model('Admin_model');
+			          $this->load->model('admin_model');
 			          $c_content = $this->input->post('updated_c');
 			          $c_id = $this->input->post('c_id');
 			          $array= array('c_content' => $c_content, 'c_id' => $c_id);
-			          $this->Admin_model->m_update_comment($array);
+			          $this->admin_model->m_update_comment($array);
 			             redirect('admin/comments');
 		      }
 	    }
 
       public function c_approve_ngo(){
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model');
         $id = $this->input->post('ngo_id');
-        $this->Admin_model->m_approve_ngo($id);
-        redirect('admin/new_ngo_list');
+        $this->admin_model->m_approve_ngo($id);
+        redirect('admin/pending/ngos');
       }
 
       public function c_approve_eng(){
-        $this->load->model('Admin_model');
+        $this->load->model('admin_model');
         $id = $this->input->post('eng_id');
-        $this->Admin_model->m_approve_eng($id);
-        redirect('admin/new_eng_list');
+        $this->admin_model->m_approve_eng($id);
+        redirect('admin/pending/engineer');
+      }
+
+      public function c_eng_details(){
+        $this->load->model('admin_model');
+        $eng_id = $this->input->post('eng_id');
+        $result = $this->admin_model->m_eng_details($eng_id);
+        $data = array('data' =>$result);
+        $this->load->view('admin/engineers/view_detail_eng', $data);
+      }
+
+      public function c_ngo_details(){
+        $this->load->model('admin_model');
+        $ngo_id = $this->input->post('ngo_id');
+        $result = $this->admin_model->m_ngo_details($ngo_id);
+        $data = array('data' =>$result);
+        $this->load->view('admin/ngos/view_detail_ngo', $data);
       }
 
 }

@@ -5,49 +5,52 @@ class Admin_model extends CI_Model{
 
   public function m_list_of_ngo(){
     $query = "SELECT * FROM ngos where ngos.approved=?";
-    $values = 1;
-    return $this->db->query($query, $values);
+    return $this->db->query($query, 1)->result_array();
   }
 
   public function m_list_of_eng(){
     $query = "SELECT * FROM engineers WHERE engineers.approved=?";
-    $values = 1;
-    return $this->db->query($query, $values);
+    return $this->db->query($query, 1)->result_array();
   }
 
   public function m_list_of_questions(){
-    $query = "SELECT * FROM questions
+    $query = "SELECT questions.*, questions.id AS q_id, ngos.id AS ngoid, ngos.name AS ngoname
+                FROM questions
                 LEFT join ngos
-                 ON questions.ngo_id=ngos.id";
-    return $this->db->query($query);
+                 ON questions.ngo_id=ngos.id
+                 ORDER BY questions.updated_at DESC";
+    return $this->db->query($query)->result_array();
   }
 
   public function m_list_of_answers(){
-    $query = "SELECT * FROM answers
+    $query = "SELECT *, answers.id AS a_id FROM answers
                 LEFT join engineers
-                 ON answers.engineer_id=engineers.id";
-    return $this->db->query($query);
+                 ON answers.engineer_id=engineers.id
+                 LEFT JOIN questions
+                 ON answers.question_id=questions.id
+                 ORDER BY answers.updated_at DESC";
+    return $this->db->query($query)->result_array();
   }
 
   public function m_list_of_comments(){
-    $query = "SELECT * FROM comments
+    $query = "SELECT *,comments.id AS c_id FROM comments
                 LEFT join ngos
                     ON comments.ngo_id=ngos.id
                 LEFT join engineers
-                    ON comments.ngo_id=ngos.id";
-    return $this->db->query($query);
+                    ON comments.engineer_id=engineers.id";
+    return $this->db->query($query)->result_array();
   }
 
   public function m_list_of_ngo_newforms(){
     $query = "SELECT * FROM ngos
               WHERE ngos.approved=?";
-    return $this->db->query($query, 0);
+    return $this->db->query($query, 0)->result_array();
   }
 
   public function m_list_of_eng_newforms(){
-    $query = "SELECT * FROM engineer
-              WHERE engineer.approved=?";
-    return $this->db->query($query, 0);
+    $query = "SELECT * FROM engineers
+              WHERE engineers.approved=?";
+    return $this->db->query($query, 0)->result_array();
   }
 
   //need some work
@@ -131,7 +134,21 @@ class Admin_model extends CI_Model{
                 WHERE engineers.id=?";
       $values = array(1, $id);
       $this->db->query($query, $values);
-}
+    }
+
+    public function m_eng_details($id){
+      $query = "SELECT * FROM engineers
+                WHERE engineers.id=?";
+     return $this->db->query($query, $id)->row_array();
+    }
+
+    public function m_ngo_details($id){
+      $query = "SELECT * FROM ngos
+                WHERE ngos.id=?";
+     return $this->db->query($query, $id)->row_array();
+    }
+
+  }
 
 
 
