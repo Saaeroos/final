@@ -36,7 +36,7 @@ class Eng_model extends CI_Model{
 
   //15-11-2017 mohamed
   public function select_one_eng($id){
-    $query = "SELECT * FROM emgineers WHERE id=?";
+    $query = "SELECT * FROM engineers WHERE id=?";
     return $this->db->query($query, $id)->row_array();
   }
 
@@ -52,5 +52,9 @@ class Eng_model extends CI_Model{
                $data['c_photo'], $data['c_form_linkedin'], $data['c_aboutme'],
                $data['c_username'],$data['c_password']);
     return $this->db->query($query, $values);
+  }
+  public function m_delete_eng($id){
+    $query = "DELETE FROM engineers WHERE id=?";
+    $this->db->query($query, $id);
   }
 }
