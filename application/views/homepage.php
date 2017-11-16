@@ -2,6 +2,7 @@
 <?php $this->load->view('header') ?>
 
 <div class="container">
+  <?php $this->load->view('validation_errors') ?>
   <div class="card-columns">
     <div class="card p-3">
       <blockquote class="blockquote mb-0 card-body">

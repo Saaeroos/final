@@ -19,6 +19,11 @@ class Ngo_c extends CI_Controller{
 		}
 
 		public function	ngo_registerprocess(){
+    $config['upload_path']   = './uploads/';// relative to the root of this project
+    $config['allowed_types'] = 'gif|jpg|png';
+    $config['max_size']      = 5000;
+    $config['max_width']     = 2048;
+    $config['max_height']    = 2048;
 		$this->form_validation->set_rules('form_name',            'Name',                      'trim|required');
 		$this->form_validation->set_rules('form_contact_person',   'Contact person',           'trim|required');
     $this->form_validation->set_rules('form_contact_email',    'Email',                    'trim|required|valid_email|is_unique[ngos.contact_email]');
@@ -28,6 +33,16 @@ class Ngo_c extends CI_Controller{
     $this->form_validation->set_rules('form_password',         'Password',                  'required|trim|min_length[7]');
 		$this->form_validation->set_rules('form_con_password',     'password Confirmation', 'trim|required|matches[form_password]');
 		// $this->form_validation->set_rules('form_email',       'Email', 'required|valid_email|is_unique[users.email]');
+        $upload_picture = $this->upload->do_upload('form_photo');
+      if ($this->form_validation->run() == FALSE || $upload_picture == FALSE)
+      {
+            $this->session->set_flashdata('error', 'invalid data');
+            $this->load->view('users/ngo_registration');
+      }
+      else
+      {
+
+        $photo = $this->upload->data();
 
 
         if ($this->form_validation->run() == FALSE)
@@ -38,7 +53,9 @@ class Ngo_c extends CI_Controller{
 
         }
         else
+
         {
+          $photo =$this->upload->data();
 
     //       $post = $this->input->post();
     //   $this->load->model('ngo_model');
@@ -56,8 +73,9 @@ class Ngo_c extends CI_Controller{
         'c_fields_activity'   => $this->input->post('form_fields_activity',true),
 				'c_website'           => $this->input->post('form_website',true),
         'c_username'          => $this->input->post('form_username',true),
-        'c_password'          => $this->input->post('form_password',true)
+        'c_password'          => $this->input->post('form_password',true),
         // 'c_email'          => $this->input->post('form_password',true),
+        'c_profile_photo'     =>$this->input->post('form_profile_photo, true')
         );
 
 			$this->session->set_flashdata('success', 'Users successfully added. Thanks');
@@ -66,7 +84,7 @@ class Ngo_c extends CI_Controller{
         }
 	}
 
-
+}
 
 
     public function add_question(){
@@ -130,12 +148,12 @@ class Ngo_c extends CI_Controller{
   public function c_update_ngo(){
     $this->form_validation->set_rules('form_name', 'Name', 'trim|required');
     $this->form_validation->set_rules('form_contact_person', 'Contact person', 'trim|required');
-    $this->form_validation->set_rules('form_contact_email',    'Email', 'trim|required|valid_email');
-    $this->form_validation->set_rules('form_fields_activity', 'Fields of activity', 'trim|required');
-    $this->form_validation->set_rules('form_website', 'Website', 'trim');
-    $this->form_validation->set_rules('form_username', 'Username', 'required|trim|min_length[5]');
-    $this->form_validation->set_rules('form_password', 'Password', 'required|trim|min_length[7]');
-    $this->form_validation->set_rules('form_con_password', 'password Confirmation', 'trim|required|matches[form_password]');
+    $this->form_validation->set_rules('form_contact_email',  'Email', 'trim|required|valid_email');
+    $this->form_validation->set_rules('form_fields_activity','Fields of activity', 'trim|required');
+    $this->form_validation->set_rules('form_website','Website', 'trim');
+    $this->form_validation->set_rules('form_username','Username','required|trim|min_length[5]');
+    $this->form_validation->set_rules('form_password','Password','required|trim|min_length[7]');
+    $this->form_validation->set_rules('form_con_password','password Confirmation', 'trim|required|matches[form_password]');
 
         if ($this->form_validation->run() == FALSE)
         {
@@ -168,6 +186,19 @@ class Ngo_c extends CI_Controller{
     session_destroy();
     redirect('/');
   }
+
+  public function c_share_request_ngo(){
+    //$this->output->enable_profiler(TRUE);
+
+$this->load->model('main_model');
+  $ngo_id = $this->session->currentUser['id'];
+  $result =$this->main_model->get_all_share_request_ngo($ngo_id);
+  $view_data =  array('share_requests' => $result);
+
+  $this->load->view('users/ngo_share_request', $view_data);
+
+}
+
 
 
 }

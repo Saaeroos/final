@@ -24,6 +24,13 @@ $route['user/engineer/profile/edit']= 'eng_c/eng_edit_profile';
 $route['user/engineer/profile/update'] = 'eng_c/c_update_eng';
 $route['user/eng/profile/delete'] = 'eng_c/eng_delete_profile';
 
+$route['engineer/(:num)/request'] = 'eng_c/share_request/$1';
+$route['user/engineer/share_requests']= 'eng_c/c_share_request_eng';
+$route['profile/ngo/share_requests']= 'ngo_c/c_share_request_ngo';
+
+// used for shared profile view
+$route['engineer/(:num)/profile'] = 'main/engineer_profile';
+
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';
 

@@ -35,6 +35,11 @@
             </div>
             <div class="card-body">
               <p class="card-text"><?php echo $answer['a_content'] ?></p>
+              <?php // if (current user is ngo?) ?>
+              <div class="clearfix">
+                <?php //var_dump($answer)?>
+              <a href="/engineer/<?php echo $answer['engineer_id'] ?>/request" class="btn btn-primary float-right">Request Profile</a>
+              </div>
             </div>
           </div>
 

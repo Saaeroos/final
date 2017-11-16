@@ -52,6 +52,7 @@
             <a href="/" class="btn btn-primary">Platform</a>
             <a href="#delete" data-toggle="modal" class="btn btn-primary">Delete</a>
             <a href="/user/engineer/profile/edit" class="btn btn-primary">Edit</a>
+            <a href="/user/engineer/share_requests" class="btn btn-primary">Share Requests</a>
           </nav>
         </div>
       </div>

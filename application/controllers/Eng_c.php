@@ -11,7 +11,7 @@ class Eng_c extends CI_Controller{
   }
 
   public function	eng_registerprocess(){
-    $config['upload_path']   = './uploads/'; // relative to the root of this project
+    $config['upload_path']   = './uploads/';// relative to the root of this project
     $config['allowed_types'] = 'gif|jpg|png';
     $config['max_size']      = 5000;
     $config['max_width']     = 2048;
@@ -162,6 +162,30 @@ public function c_add_comment_eng(){
     session_destroy();
     redirect('/');
   }
+
+public function share_request($engineer_id) {
+  $this->load->model('main_model');
+  $ngo_id = $this->session->currentUser['id'];
+  $this->main_model->insert_share_request($engineer_id, $ngo_id);
+  // maybe redirect to the question again, but we need question id?
+  redirect('/');
+}
+
+public function c_share_request_eng(){
+$this->output->enable_profiler(TRUE);
+
+$this->load->model('main_model');
+ $eng_id = $this->session->currentUser['id'];
+
+  $result =$this->main_model->get_all_share_request_eng($eng_id);
+  $view_data =  array('share_requests' => $result);
+
+  $this->load->view('users/engineer_share_request', $view_data);
+
+}
+
+
+
 
 
 

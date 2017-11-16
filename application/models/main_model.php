@@ -93,7 +93,7 @@ $result = $this->db->query($query, $a_id)->row_array();
     }
 
 public function get_answers_for_question($question_id){
-  $query = "SELECT answers.id, answers.a_content,answers.created_at,  engineers.name AS engineer_name
+  $query = "SELECT answers.id, answers.a_content,answers.created_at,  engineers.name AS engineer_name, engineers.id AS engineer_id
     FROM answers
     LEFT JOIN engineers ON answers.engineer_id=engineers.id
     WHERE answers.question_id=?
@@ -101,5 +101,33 @@ public function get_answers_for_question($question_id){
 
  return $this->db->query($query, $question_id)->result_array();
 }
+
+public function insert_share_request($engineer_id, $ngo_id) {
+  $query ="INSERT INTO share_request (engineer_id, ngo_id, status)
+  VALUES(?, ?, ?)";
+  $values = array($engineer_id, $ngo_id, 'new');
+  $this->db->query($query, $values);
+}
+
+public function get_all_share_request_ngo($ngo_id){
+
+$query="SELECT * FROM  share_request
+LEFT JOIN engineers ON share_request.engineer_id=engineers.id
+WHERE ngo_id = ?";
+
+return $this->db->query($query, $ngo_id)->result_array();
+
+}
+public function get_all_share_request_eng($eng_id){
+
+$query="SELECT * FROM  share_request
+LEFT JOIN ngos ON share_request.ngo_id = ngos.id
+WHERE engineer_id= ?";
+
+return $this->db->query($query, $eng_id)->result_array();
+
+}
+
+
 
 }

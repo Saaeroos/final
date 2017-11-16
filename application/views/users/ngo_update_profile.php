@@ -48,6 +48,16 @@
         <input  name="form_con_password" type="password" class="form-control" id="form_con_password" aria-describedby="form_con_passwordHelp" placeholder="Confirm Password">
       </div>
 
+      <div class="form-group">
+        <label for="form_photo">Photo</label>
+        <div>
+          <img src="/uploads/<?php echo $ngo['photo'] ?>" class="rounded" alt="..." width="200" height="200">
+        </div>
+        <div>
+          <input id="form_photo" type="file" name="form_photo" size="20">
+        </div>
+      </div>
+
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
 

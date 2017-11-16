@@ -193,6 +193,11 @@ class Main extends CI_Controller{
     }
 
     public function c_show_profile_details(){
+      if(empty($this->session->currentUser)) {
+        $this->session->set_flashdata('error', 'Not allowed, please sign in first.');
+        redirect('/');
+      }
+
       $this->load->model('main_model');
       $current_user = $this->session->userdata('currentUser');
       $id = $current_user['id'];

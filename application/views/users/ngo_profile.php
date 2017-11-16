@@ -40,7 +40,7 @@
         <dl class="row">
           <dt class="col-sm-2">Picture:</dt>
           <dd class="col-sm-7">
-            <img src="<?php echo $ngo['profile_photo']?>"> class="rounded" alt="..." width="200" height="200">
+            <img src="/uploads/<?php echo $ngo['profile_photo'] ?>" class="rounded" alt="..." width="200" height="200">
           </dd>
         </dl>
 
@@ -49,6 +49,7 @@
             <a href="/" class="btn btn-primary">Platform</a>
             <a href="#delete" data-toggle="modal" class="btn btn-primary">Delete</a>
             <a href="/user/ngo/profile/edit" class="btn btn-primary">Edit</a>
+            <a href="/profile/ngo/share_requests" class="btn btn-primary">Share Request</a>
           </nav>
         </div>
       </div>
