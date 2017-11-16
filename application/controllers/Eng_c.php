@@ -102,15 +102,16 @@ public function c_add_comment_eng(){
     }
 //15-11-2017 mohamed
     public function eng_edit_profile(){
-      $this->load->model('eng_model');
+      $this->load->model('main_model');
       $cUser = $this->session->userdata('currentUser');
       $eng_id = $cUser['id'];
-      $result = $this->eng_model->select_one_eng($eng_id);
+      //$result = $this->eng_model->select_one_eng($eng_id);
+      $result =$this->main_model->m_eng_details($eng_id);
       $data = array(
-            'data'    => $result,
+            'engineer'    => $result,
             'cUser'		=> $cUser
               );
-      $this->load->view('engineers/view_engineer', $data);
+      $this->load->view('users/engineer_edit_profile', $data);
     }
 
     public function c_update_eng(){
@@ -155,6 +156,13 @@ public function c_add_comment_eng(){
         redirect(base_url('register'));
           }
     }
+    public function eng_delete_profile() {
+    $this->load->model('Eng_model');
+    $this->Ngo_model->m_delete_eng($this->session->currentUser['id']);
+    session_destroy();
+    redirect('/');
+  }
+
 
 
 }

@@ -53,9 +53,10 @@ class Main extends CI_Controller{
       'question' => $question
     );
 
-    $this->form_validation->set_rules('comment', "comment", 'min_length[10]');
+    $this->form_validation->set_rules('comment', "Comment", 'min_length[10]');
+
     if($this->form_validation->run() == FALSE) {
-      $this->load->view('questions/view_question', $view_data);
+      return $this->load->view('questions/view_question', $view_data);
     }
       else
       {
@@ -65,6 +66,7 @@ class Main extends CI_Controller{
           'a_id' => $this->input->post('answer_id'),
           'eng_id' => $this->session->currentUser['id']
         );
+
         $this->load->model('Eng_model');
         $this->Eng_model->m_add_comment_eng($comment);
       }
