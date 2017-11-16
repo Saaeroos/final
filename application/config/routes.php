@@ -28,8 +28,11 @@ $route['engineer/(:num)/request'] = 'eng_c/share_request/$1';
 $route['user/engineer/share_requests']= 'eng_c/c_share_request_eng';
 $route['profile/ngo/share_requests']= 'ngo_c/c_share_request_ngo';
 
+$route['share_requests/approve/(:num)']='eng_c/c_approve_share_request/$1';
+$route['share_requests/decline/(:num)']='eng_c/c_decline_share_request/$1';
+
 // used for shared profile view
-$route['engineer/(:num)/profile'] = 'main/engineer_profile';
+$route['engineer/(:num)/profile'] = 'main/c_show_shared_engineer_profile/$1';
 
 ///Questions
 $route['questions/add'] = 'ngo_c/add_question';

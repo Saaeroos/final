@@ -120,7 +120,7 @@ return $this->db->query($query, $ngo_id)->result_array();
 }
 public function get_all_share_request_eng($eng_id){
 
-$query="SELECT * FROM  share_request
+$query="SELECT *, share_request.id AS share_request_id FROM  share_request
 LEFT JOIN ngos ON share_request.ngo_id = ngos.id
 WHERE engineer_id= ?";
 

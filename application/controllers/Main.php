@@ -222,6 +222,14 @@ class Main extends CI_Controller{
 
     }
 
+  public function c_show_shared_engineer_profile($eng_id) {
+    $this->load->model('Eng_model');
+    $engineer_from_db = $this->Eng_model->select_one_eng($eng_id);
 
+    $view_data = array(
+      'engineer' => $engineer_from_db
+    );
+    $this->load->view('show_shared_engineer_profile', $view_data);
+  }
 
 }

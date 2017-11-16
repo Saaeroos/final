@@ -172,7 +172,6 @@ public function share_request($engineer_id) {
 }
 
 public function c_share_request_eng(){
-$this->output->enable_profiler(TRUE);
 
 $this->load->model('main_model');
  $eng_id = $this->session->currentUser['id'];
@@ -184,6 +183,21 @@ $this->load->model('main_model');
 
 }
 
+public function c_approve_share_request($share_request_id){
+
+  $this->load->model('share_request');
+  $result =$this->share_request->m_update_status($share_request_id, 'approved');
+
+  redirect('/user/engineer/share_requests');
+}
+
+public function c_decline_share_request($share_request_id){
+
+  $this->load->model('share_request');
+  $result =$this->share_request->m_update_status($share_request_id, 'decline');
+
+  redirect('/user/engineer/share_requests');
+}
 
 
 

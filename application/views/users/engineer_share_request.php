@@ -9,7 +9,7 @@
   <thead>
     <tr>
 
-      <th scope="col">NGO request</th>
+      <th scope="col">NGO name</th>
       <th scope="col">Date</th>
       <th scope="col">Status</th>
     </tr>
@@ -22,8 +22,8 @@
       <td><?php echo $request['name'] ?></td>
       <td><?php echo $request['created_at'] ?></td>
       <td><?php echo $request['status'] ?></td>
-      <td><a href="#" class="badge badge-success">Approve</a>
-      <a href="#" class="badge badge-warning">Decline</a></td>
+      <td><a href="/share_requests/approve/<?php echo $request['share_request_id'] ?>" class="badge badge-success">Approve</a>
+      <a href="/share_requests/decline/<?php echo $request['share_request_id'] ?>" class="badge badge-warning">Decline</a></td>
 
     </tr>
 <?php } ?>

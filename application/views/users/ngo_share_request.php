@@ -19,7 +19,7 @@
       <td><?php echo $request['created_at'] ?></td>
       <td><?php echo $request['status'] ?></td>
       <td>
-      <?php if($request['status'] == 'accepted') { ?>
+      <?php if($request['status'] == 'approved') { ?>
         <a href="/engineer/<?php echo $request['engineer_id'] ?>/profile" class="badge badge-success">Engineer Profile</a>
         <?php } ?>
     </td>
