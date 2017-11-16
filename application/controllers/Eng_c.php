@@ -16,6 +16,7 @@ class Eng_c extends CI_Controller{
     $config['max_size']      = 5000;
     $config['max_width']     = 2048;
     $config['max_height']    = 2048;
+    $this->upload->initialize($config);
 
   $this->form_validation->set_rules('form_name',              'Name',                     'trim|required');
   $this->form_validation->set_rules('form_phone',             'Phone',                     'trim|required');
@@ -31,8 +32,7 @@ class Eng_c extends CI_Controller{
       $upload_picture = $this->upload->do_upload('form_photo');
       if ($this->form_validation->run() == FALSE || $upload_picture == FALSE)
       {
-            $this->session->set_flashdata('error', 'invalid data');
-            $this->load->view('users/engineer_register');
+        $this->load->view('users/engineer_register');
       }
       else
       {
@@ -53,9 +53,9 @@ class Eng_c extends CI_Controller{
       'c_password'          => $this->input->post('form_password',true)
     );
 
-    $this->session->set_flashdata('success', 'Users successfully added. Thanks');
+    $this->session->set_flashdata('success', 'Thank you for signing up, please login');
     $this->Eng_model->add_eng( $data );
-    redirect(base_url('register'));
+    redirect('/');
       }
 }
 

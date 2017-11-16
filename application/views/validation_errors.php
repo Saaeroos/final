@@ -12,7 +12,7 @@ if(!empty($flash_error)) {
 }
 
 $uploads_errors = $this->upload->display_errors('<li>', '</li>');
-if(!empty($uploads_errors)) {
+if(!empty($_POST) && !empty($uploads_errors)) {
   $errors .= $uploads_errors;
 }
 

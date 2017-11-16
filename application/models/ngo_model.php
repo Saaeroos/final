@@ -13,11 +13,12 @@ class Ngo_model extends CI_Model{
 
   public function add_ngo($data) {
     $query = "
-      INSERT INTO ngos (name, contact_person, contact_email, fields_of_activity, website, username, password)
-      VALUES(?,?,?,?,?,?,?)";
+      INSERT INTO ngos (name, contact_person, contact_email, fields_of_activity, website, username, password, ngo_photo)
+      VALUES(?,?,?,?,?,?,?,?)";
+    $password_hash = password_hash($data['c_password'], PASSWORD_DEFAULT);
 
-    $values = array($data['c_name'], $data['c_contact_person'], $data['c_contact_email'], $data['c_fields_activity'], $data['c_website'], $data['c_username'], $data['c_password']);
-    $this->db->query($query, $data);
+    $values = array($data['c_name'], $data['c_contact_person'], $data['c_contact_email'], $data['c_fields_activity'], $data['c_website'], $data['c_username'], $password_hash, $data['c_ngo_photo']);
+    $this->db->query($query, $values);
   }
 
     public function m_add_question($data){

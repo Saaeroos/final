@@ -8,10 +8,13 @@ class Eng_model extends CI_Model{
       (name, phone, email, fields_of_expertise, photo, linkedin_link, about_me, username, password)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
     ";
+
+    $password_hash = password_hash($data['c_password'], PASSWORD_DEFAULT);
+
     $values = array($data['c_name'],    $data['c_phone'],
                $data['c_email'],   $data['c_fields_expertise'],
                $data['c_photo'], $data['c_form_linkedin'], $data['c_aboutme'],
-               $data['c_username'],$data['c_password']);
+               $data['c_username'],$password_hash);
     $this->db->query($query, $values);
   }
 
