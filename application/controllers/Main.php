@@ -124,15 +124,17 @@ class Main extends CI_Controller{
         $this->load->model('User');
         $result = $this->User->loginByUsernamePass($username, $password);
 
-              if(!empty($result)){
-                      $this->session->set_userdata('currentUser', $result);
-                      redirect('/');
-              }
-              else{
-                $view_data = array('error' => 'Incorrect username or password.');
-                $this->session->set_flashdata('error', 'Incorrect username or password.');
-                 // $this->load->view('users/user_login', $view_data);
+              if(!empty($result) && (int) $result['approved'] == 0 ) {
+                $this->session->set_flashdata('error', 'Your profile is on process or not yet approved. Please wait for the email message.');
                  redirect('/user/login');
+              } elseif(empty($result)){
+                $this->session->set_flashdata('error', 'Incorrect username or password.');
+                 redirect('/user/login');
+
+              }
+              else {
+                $this->session->set_userdata('currentUser', $result);
+                      redirect('/');
               }
       }
 

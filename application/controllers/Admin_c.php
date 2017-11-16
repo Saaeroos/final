@@ -51,6 +51,7 @@ class Admin_c extends CI_Controller{
   public function c_list_of_ngo(){
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_ngo();
+
     $data = array('data' => $result);
     $this->load->view('admin/ngos/index', $data);
   }
@@ -236,17 +237,60 @@ class Admin_c extends CI_Controller{
 
       public function c_approve_ngo(){
         $this->load->model('admin_model');
+        $this->load->model('main_model');
+
         $id = $this->input->post('ngo_id');
         $this->admin_model->m_approve_ngo($id);
+
+        $ngo = $this->main_model->m_ngo_details($id);
+
+        // send email to ngo
+        $this->email->from('engineers@ewbnl.org', 'Engineers Without Borders');
+        $this->email->to($ngo['contact_email']);
+        $this->email->subject('Account approved');
+        $this->email->message('Hello '.$ngo['contact_person'].',
+
+Thank you for signing up for EWB platform. Please feel free to ask us any questions you may have at engineers@ewbnl.org
+
+Please login at: '.base_url().'user/login
+
+Best of luck,
+
+The EWB team');
+
+        $result = $this->email->send();
+
         redirect('admin/pending/ngos');
       }
 
       public function c_approve_eng(){
         $this->load->model('admin_model');
+        $this->load->model('main_model');
+
         $id = $this->input->post('eng_id');
         $this->admin_model->m_approve_eng($id);
+
+        $eng = $this->main_model->m_eng_details($id);
+
+        // send email to ngo
+        $this->email->from('engineers@ewbnl.org', 'Engineers Without Borders');
+        $this->email->to($eng['email']);
+        $this->email->subject('Account approved');
+        $this->email->message('Hello '.$eng['name'].',
+
+Thank you for signing up for EWB platform. Please feel free to ask us any questions you may have at engineers@ewbnl.org
+
+Please login at: '.base_url().'user/login
+
+Best of luck,
+
+The EWB team');
+
+        $result = $this->email->send();
+
         redirect('admin/pending/engineer');
       }
+
 
       public function c_eng_details(){
         $this->load->model('admin_model');
