@@ -19,7 +19,7 @@
 
     <div class="card">
       <?php if(!empty($question['attachment'])) { ?>
-      <img class="card-img-top" src="<?php echo $question['attachment'] ; ?> " alt="Card image cap">
+      <img class="card-img-top" src="/uploads/<?php echo $question['attachment'] ; ?> " alt="Card image cap">
       <?php } ?>
       <div class="card-body">
         <h4 class="card-title"><?php echo $question['title'] ; ?></h4>

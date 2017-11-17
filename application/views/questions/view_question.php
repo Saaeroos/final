@@ -25,6 +25,10 @@
       <div>
 
         <section id="answers">
+          <?php if(empty($question['answers'])) {?>
+            <p>This question has no answers yet.</p>
+          <?php }else
+          {?>
           <h2>Answers</h2>
 
           <?php foreach ($question['answers'] as $answer) { ?>
@@ -74,7 +78,7 @@
             </form>
           </section>
           <?php } ?>
-
+          <?php } ?>
         </section>
 
       </div>
