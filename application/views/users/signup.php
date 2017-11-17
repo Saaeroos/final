@@ -5,9 +5,9 @@
     <div class="container-flud">
       <div class= "row">
 
-      <div class="col-6 col-md-4"><a href="/ngo/registration" class="btn btn-primary">I am part of NGO</a></div>
+      <div class="col-6 col-md-6"><a href="/ngo/registration" class="btn btn-primary">I am part of NGO</a></div>
 
-      <div class="col-6 col-md-4"><a href="/engineer/registration" class="btn btn-primary">I am an Engineer</a></div>
+      <div class="col-6 col-md-6"><a href="/engineer/registration" class="btn btn-primary">I am an Engineer</a></div>
       </div>
 
     </div>
