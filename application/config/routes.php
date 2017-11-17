@@ -67,6 +67,7 @@ $route['admin/edit/comment']= 'admin_c/c_edit_comment';
 $route['admin/pending/ngos']= 'admin_c/c_list_of_ngo_newforms';
 $route['admin/pending/engineer']= 'admin_c/c_list_of_eng_newforms';
 //admin list of approved eng,ngos
+$route['admin']= 'admin_c/c_list_of_ngo';
 $route['admin/ngos']= 'admin_c/c_list_of_ngo';
 $route['admin/engineers']= 'admin_c/c_list_of_eng';
 

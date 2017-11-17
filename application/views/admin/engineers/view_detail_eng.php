@@ -5,29 +5,10 @@
   <?php $this->load->view('admin/application/bootstrap') ?>
   <meta charset="utf-8">
   <title>NGO Profile View</title>
-  <style type="text/css">
-  /*.row{
-
-    display: inline;
-
-    }*/
-  </style>
 </head>
 <body>
-  <header>
-    <div  id="admin" class="container-fluid">
-      <div><h1>Admin Mark</h1></div>
-    </div>
+   <?php $this->load->view('admin/application/header') ?>
 
-    <div class="container-fluid">
-      <ul class="nav justify-content-end">
-        <li class="nav-item"><a class="nav-link platform" href="#">Platform</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
-      </ul>
-
-    </div>
-
-  </header>
   <div class="container-fluid">
     <div class="row">
       <section id="sidebar" class="col-md-2">
@@ -57,7 +38,7 @@
 
         <dl class="row">
           <dt class="col-sm-2">Field of Experties:</dt>
-          <dd class="col-sm-7"><?= $data['fields_of_experties']; ?></dd>
+          <dd class="col-sm-7"><?= $data['fields_of_expertise']; ?></dd>
         </dl>
 
         <dl class="row">

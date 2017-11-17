@@ -8,16 +8,16 @@
 <body>
 
   <div class="container">
-
-    <form>
+    <?php $this->load->view('validation_errors') ?>
+    <form method="POST">
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username">
+        <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter Username" name="username">
 
       </div>
       <div class="form-group">
         <label for="InputPassword1">Password</label>
-        <input type="password" class="form-control" id="InputPassword1" placeholder="Password">
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Password" name="password">
       </div>
       <div class="form-check">
         <label class="form-check-label">

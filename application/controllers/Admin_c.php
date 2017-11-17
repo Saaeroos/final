@@ -1,12 +1,38 @@
 <?php
+// uncomment this to create 1 admin user password
+// print password_hash('test12345', PASSWORD_DEFAULT);
+// then add the manually in the database
+// exit;
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin_c extends CI_Controller{
 
-  // login
+  // process login for admin
   public function login(){
-    $this->load->view('admin/login');
-  }
+    $this->form_validation->set_rules('username', "Username", 'required');
+    $this->form_validation->set_rules('password', 'Password', 'required|min_length[7]');
+
+      if ($this->form_validation->run() == FALSE) {
+        $this->load->view('admin/login');
+      }
+      else{
+
+        $username= $this->input->post('username',true);
+        $password= $this->input->post('password',true);
+        $this->load->model('User');
+        $result = $this->User->loginAdmin($username, $password);
+
+              if(empty($result)){
+                $this->session->set_flashdata('error', 'Incorrect username or password.');
+                 redirect('/admin/login');
+              }
+              else {
+                $this->session->set_userdata('currentUser', $result);
+                redirect('/admin/ngos');
+              }
+      }
+
+    }
 
   public function forgot_password(){
     $this->load->view('admin/forgot_password');
@@ -49,6 +75,8 @@ class Admin_c extends CI_Controller{
   // }
 
   public function c_list_of_ngo(){
+    $this->check_admin_logged_in();
+
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_ngo();
 
@@ -57,6 +85,7 @@ class Admin_c extends CI_Controller{
   }
 
   public function c_list_of_eng(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_eng();
     $data = array('data' => $result);
@@ -64,6 +93,7 @@ class Admin_c extends CI_Controller{
   }
 
   public function c_list_of_questions(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_questions();
     $data = array('data' => $result);
@@ -71,6 +101,7 @@ class Admin_c extends CI_Controller{
  }
 
   public function c_list_of_answers(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_answers();
     $data = array('data' => $result);
@@ -78,6 +109,7 @@ class Admin_c extends CI_Controller{
   }
 
   public function c_list_of_comments(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_comments();
     $data = array('data' => $result);
@@ -86,6 +118,7 @@ class Admin_c extends CI_Controller{
 //changed function name for ngo list
 
   public function c_list_of_ngo_newforms(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_ngo_newforms();
     $data = array('data' => $result);
@@ -93,6 +126,7 @@ class Admin_c extends CI_Controller{
   }
 
   public function c_list_of_eng_newforms(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_list_of_eng_newforms();
     $data = array('data' => $result);
@@ -101,6 +135,7 @@ class Admin_c extends CI_Controller{
 
   //need some work
   public function c_platform_all_question(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_platform_question();
     $data = array('data' => $result);
@@ -108,6 +143,7 @@ class Admin_c extends CI_Controller{
   }
 
   public function c_platform_detailed_q(){
+    $this->check_admin_logged_in();
     $this->load->model('admin_model');
     $result = $this->admin_model->m_platform_detailed_q();
     $data = array('data' => $result);
@@ -118,6 +154,7 @@ class Admin_c extends CI_Controller{
   //delete functions:
 
       public function c_delete_ngo($id){
+        $this->check_admin_logged_in();
              // get the $id from the route url, post is not used
 			       // $id = $this->input->post('ngo_id');
 			       // $this->load->model('Admin_model');
@@ -126,6 +163,7 @@ class Admin_c extends CI_Controller{
       }
 
       public function c_delete_eng(){
+        $this->check_admin_logged_in();
   			   $id = $this->input->post('eng_id');
   			      $this->load->model('admin_model');
   			         $this->admin_model->m_delete_eng($id);
@@ -133,18 +171,21 @@ class Admin_c extends CI_Controller{
   		}
 
       public function c_delete_question(){
+        $this->check_admin_logged_in();
     			  $id = $this->input->post('q_id');
     			  $this->load->model('admin_model');
     			  $this->admin_model->m_delete_question($id);
     			  redirect('/admin/questions');
     	}
       public function c_delete_answer(){
+        $this->check_admin_logged_in();
             $id = $this->input->post('a_id');
             $this->load->model('admin_model');
             $this->admin_model->m_delete_answer($id);
             redirect('/admin/answers');
       }
       public function c_delete_comment(){
+        $this->check_admin_logged_in();
             $id = $this->input->post('c_id');
             $this->load->model('admin_model');
             $this->admin_model->m_delete_comment($id);
@@ -156,6 +197,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_question(){
+        $this->check_admin_logged_in();
 				// $this->load->model('admin_model');
 				$data = array(
 					           'q_text'    =>  $this->input->post('q_text'),
@@ -165,6 +207,7 @@ class Admin_c extends CI_Controller{
 		  }
 
 		  public function c_update_question(){
+        $this->check_admin_logged_in();
 			     // $data = $this->input->post('updated_q');
 
 				$this->form_validation->set_rules('updated_q', 'Updated question', 'trim|required');
@@ -183,6 +226,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_answer(){
+        $this->check_admin_logged_in();
 				// $this->load->model('Admin_model');
 				$data = array(
 					           'a_text'    =>  $this->input->post('a_text'),
@@ -192,6 +236,7 @@ class Admin_c extends CI_Controller{
 		  }
 
 		  public function c_update_answer(){
+        $this->check_admin_logged_in();
 			     $data = $this->input->post('updated_a');
 
 				$this->form_validation->set_rules('updated_a', 'updated_a', 'trim|required');
@@ -210,6 +255,7 @@ class Admin_c extends CI_Controller{
 
 
       public function c_edit_comment(){
+        $this->check_admin_logged_in();
 				// $this->load->model('Admin_model');
 				$data = array(
 					           'c_text'    =>  $this->input->post('c_text'),
@@ -219,6 +265,7 @@ class Admin_c extends CI_Controller{
 		  }
 
 		  public function c_update_comment(){
+        $this->check_admin_logged_in();
 			     $data = $this->input->post('updated_c');
 
 				$this->form_validation->set_rules('updated_c', 'Updated comment', 'trim|required');
@@ -236,6 +283,7 @@ class Admin_c extends CI_Controller{
 	    }
 
       public function c_approve_ngo(){
+        $this->check_admin_logged_in();
         $this->load->model('admin_model');
         $this->load->model('main_model');
 
@@ -264,6 +312,7 @@ The EWB team');
       }
 
       public function c_approve_eng(){
+        $this->check_admin_logged_in();
         $this->load->model('admin_model');
         $this->load->model('main_model');
 
@@ -293,6 +342,7 @@ The EWB team');
 
 
       public function c_eng_details(){
+        $this->check_admin_logged_in();
         $this->load->model('admin_model');
         $eng_id = $this->input->post('eng_id');
         $result = $this->admin_model->m_eng_details($eng_id);
@@ -301,6 +351,7 @@ The EWB team');
       }
 
       public function c_ngo_details(){
+        $this->check_admin_logged_in();
         $this->load->model('admin_model');
         $ngo_id = $this->input->post('ngo_id');
         $result = $this->admin_model->m_ngo_details($ngo_id);
@@ -308,6 +359,12 @@ The EWB team');
         $this->load->view('admin/ngos/view_detail_ngo', $data);
       }
 
+      private function check_admin_logged_in() {
+        if(empty($this->session->currentUser && $this->session->currentUser['role'] == 'admin')) {
+          $this->session->set_flashdata('error', 'Not allowed, please sign in as admin first.');
+          redirect('/admin/login');
+        }
+      }
 }
 
 

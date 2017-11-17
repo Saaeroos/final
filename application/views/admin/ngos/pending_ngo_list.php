@@ -7,18 +7,7 @@
   <title>Admin: NGOs</title>
 </head>
 <body>
-  <header>
-    <div  id="admin" class="container-fluid">
-      <div><h1>Admin Mark</h1></div>
-    </div>
-
-    <div class="container-fluid">
-      <ul class="nav justify-content-end">
-        <li class="nav-item"><a class="nav-link platform" href="#">Platform</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
-      </ul>
-    </div>
-  </header>
+ <?php $this->load->view('admin/application/header') ?>
 
   <div class="container-fluid">
     <div class="row">

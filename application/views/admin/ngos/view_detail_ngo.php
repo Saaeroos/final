@@ -5,29 +5,11 @@
   <?php $this->load->view('admin/application/bootstrap') ?>
   <meta charset="utf-8">
   <title>NGO Profile View</title>
-  <style type="text/css">
-  /*.row{
 
-    display: inline;
-
-    }*/
-  </style>
 </head>
 <body>
-  <header>
-    <div  id="admin" class="container-fluid">
-      <div><h1>Admin Mark</h1></div>
-    </div>
+  <?php $this->load->view('admin/application/header') ?>
 
-    <div class="container-fluid">
-      <ul class="nav justify-content-end">
-        <li class="nav-item"><a class="nav-link platform" href="#">Platform</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Log Out</a></li>
-      </ul>
-
-    </div>
-
-  </header>
   <div class="container-fluid">
     <div class="row">
       <section id="sidebar" class="col-md-2">
@@ -79,7 +61,7 @@
               <input type="submit" value="Delete" class="btn btn-danger btn-sm">
             </form>
             <form method="post" action="/admin/pending/ngo/approve">
-                <input type="hidden" name="ngo_id" value="<?= $item['id']; ?>">
+                <input type="hidden" name="ngo_id" value="<?= $data['id']; ?>">
                 <input type="submit" value="Approve" class="btn btn-success btn-sm" >
             </form>
           </nav>
