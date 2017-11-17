@@ -1,5 +1,7 @@
 <header>
   <a href="/"><img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg"></a>
+
+  <nav>
   <?php if(!empty($this->session->userdata('currentUser'))) { ?>
     <a href="/" class="secondary-light-blue">Home</a>
     <a href="/logout" class="secondary-light-blue">Sign out</a>
@@ -15,4 +17,5 @@
   <?php } ?>
 
   <button class="btn btn-donate">Donate</button>
+</nav>
 </header>

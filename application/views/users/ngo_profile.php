@@ -40,7 +40,7 @@
         <dl class="row">
           <dt class="col-sm-2">Picture:</dt>
           <dd class="col-sm-7">
-            <img src="/uploads/<?php echo $ngo['profile_photo'] ?>" class="rounded" alt="..." width="200" height="200">
+            <img src="/uploads/<?php echo $ngo['ngo_photo'] ?>" class="rounded" alt="..." width="200" height="200">
           </dd>
         </dl>
 
