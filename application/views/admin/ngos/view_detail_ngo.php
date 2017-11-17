@@ -7,8 +7,12 @@
   <title>NGO Profile View</title>
 
 </head>
+
+
 <body>
+
   <?php $this->load->view('admin/application/header') ?>
+
 
   <div class="container-fluid">
     <div class="row">

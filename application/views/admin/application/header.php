@@ -1,3 +1,11 @@
+<style type="text/css">
+
+  header {
+    margin-top: 100px;
+  }
+</style>
+
+
 <header>
     <div  id="admin" class="container-fluid">
       <div><h1>Admin <?php echo $this->session->currentUser[

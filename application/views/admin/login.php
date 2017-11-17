@@ -7,6 +7,11 @@
 </head>
 <body>
 
+  <header>
+    <a href="/"><img src="https://www.ewbnl.org/wp-content/themes/ewb/images/logo.svg"></a>
+    <link rel="stylesheet" type="text/css" href="/assets/platform.css">
+  </header>
+
   <div class="container">
     <?php $this->load->view('validation_errors') ?>
     <form method="POST">
