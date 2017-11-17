@@ -54,7 +54,7 @@
         <dl class="row">
           <dt class="col-sm-2">Picture:</dt>
           <dd class="col-sm-7">
-            <img src="http://www.desicomments.com/dc/21/48574/485741.jpg" class="rounded" alt="..." width="200" height="200">
+            <img src="/uplaods/<?= $data['photo']; ?>" class="rounded" alt="engineer photo" width="200" height="200">
           </dd>
         </dl>
 
