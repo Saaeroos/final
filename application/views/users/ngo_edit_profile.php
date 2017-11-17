@@ -50,7 +50,7 @@
       <div class="form-group">
         <label for="form_photo">Photo</label>
         <div>
-          <img src="/uploads/<?php echo $ngo['profile_photo'] ?>" class="rounded" alt="..." width="200" height="200">
+          <img src="/uploads/<?php echo $ngo['ngo_photo'] ?>" class="rounded" alt="..." width="200" height="200">
         </div>
         <div>
           <input id="form_photo" type="file" name="form_photo" size="20">
