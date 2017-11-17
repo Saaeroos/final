@@ -10,10 +10,12 @@
     <a href="/user/signup" class="secondary-light-blue">Signup</a>
   <?php } ?>
 
-  <?php if ($this->session->currentUser['role'] == 'ngo' ) { ?>
-    <a href="/user/ngo/profile">Profile</a>
-    <?php } else { ?>
-    <a href="/user/engineer/profile">Profile</a>
+  <?php if(isset($this->session->currentUser)) { ?>
+    <?php if ($this->session->currentUser['role'] == 'ngo' ) { ?>
+      <a href="/user/ngo/profile">Profile</a>
+      <?php } else { ?>
+      <a href="/user/engineer/profile">Profile</a>
+    <?php } ?>
   <?php } ?>
 
   <button class="btn btn-donate">Donate</button>

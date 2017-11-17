@@ -39,15 +39,16 @@
             </div>
             <div class="card-body">
               <p class="card-text"><?php echo $answer['a_content'] ?></p>
-              <?php // if (current user is ngo?) ?>
+              <?php if(!empty($this->session->currentUser) && $this->session->currentUser['role'] == 'ngo') { ?>
               <div class="clearfix">
                 <?php //var_dump($answer)?>
               <a href="/engineer/<?php echo $answer['engineer_id'] ?>/request" class="btn btn-primary float-right">Request Profile</a>
               </div>
+              <?php } ?>
             </div>
           </div>
 
-
+          <?php if(!empty($this->session->currentUser)) { ?>
           <section class="comments mt-4 ml-5 mb-5">
             <h4>Comments:</h4>
             <?php if(!empty($answer['comments'])) { ?>
@@ -76,10 +77,12 @@
             <input type="hidden" name="answer_id" value="<?php echo $answer['id'] ?>">
             <button type="submit" class="btn btn-outline-primary">Send comment</button>
             </form>
-          </section>
-          <?php } ?>
-          <?php } ?>
-        </section>
+            <?php } ?>
+
+          </section> <!-- end comments -->
+             <?php } ?>
+<?php } ?>
+        </section><!-- end answer -->
 
       </div>
     </div>
