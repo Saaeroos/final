@@ -4,12 +4,14 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Admin_model extends CI_Model{
 
   public function m_list_of_ngo(){
-    $query = "SELECT * FROM ngos where ngos.approved=?";
+    $query = "SELECT * FROM ngos where ngos.approved=?
+                ORDER BY created_at DESC";
     return $this->db->query($query, 1)->result_array();
   }
 
   public function m_list_of_eng(){
-    $query = "SELECT * FROM engineers WHERE engineers.approved=?";
+    $query = "SELECT * FROM engineers WHERE engineers.approved=?
+              ORDER BY created_at DESC";
     return $this->db->query($query, 1)->result_array();
   }
 
@@ -43,13 +45,15 @@ class Admin_model extends CI_Model{
 
   public function m_list_of_ngo_newforms(){
     $query = "SELECT * FROM ngos
-              WHERE ngos.approved=?";
+              WHERE ngos.approved=?
+              ORDER BY created_at DESC";
     return $this->db->query($query, 0)->result_array();
   }
 
   public function m_list_of_eng_newforms(){
     $query = "SELECT * FROM engineers
-              WHERE engineers.approved=?";
+              WHERE engineers.approved=
+              ORDER BY created_at DESC?";
     return $this->db->query($query, 0)->result_array();
   }
 
