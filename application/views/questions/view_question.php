@@ -4,8 +4,8 @@
 <div class="container">
   <?php $this->load->view('validation_errors') ?>
   <div class="container-fluid">
-    <h1>Question from NGO</h1>
-    <h2><?php echo $question['title']; ?></h2>
+    <h1><?php echo $question['title']; ?></h1>
+    <h2>Question from <?php echo $question['ngo']['name']; ?></h2>
     <?php //var_dump($question) ?>
     <h4>Contact Person:<?php echo $question['ngo']['name'] ?></h4>
     <h4>Contact info: <?php echo $question['ngo']['contact_email'] ?></h4>
