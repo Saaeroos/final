@@ -30,11 +30,11 @@
   </header>
   <div class="container-fluid">
     <div class="row">
-      <section id="sidebar" class="col-md-3">
+      <section id="sidebar" class="col-md-2">
         <?php $this->load->view('admin/application/sidebar_menu') ?>
       </section>
 
-      <div class="container-fluid col-md-9">
+      <div class="container-fluid col-md-10">
         <dl class="row">
           <dt class="col-sm-2">NGO name:</dt>
           <dd class="col-sm-7"><?= $data['name']; ?></dd>

@@ -23,11 +23,11 @@
 
   <div class="container-fluid">
     <div class="row">
-      <section id="sidebar" class="col-md-3">
+      <section id="sidebar" class="col-md-2">
         <?php $this->load->view('admin/application/sidebar_menu') ?>
       </section>
 
-      <section id="main" class="col-md-9">
+      <section id="main" class="col-md-10">
         <div><h1>List of Questions</h1></div>
 
         <table class="table table-striped">
