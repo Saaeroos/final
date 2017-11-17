@@ -39,7 +39,8 @@ class Admin_model extends CI_Model{
                 LEFT join ngos
                     ON comments.ngo_id=ngos.id
                 LEFT join engineers
-                    ON comments.engineer_id=engineers.id";
+                    ON comments.engineer_id=engineers.id
+                    ORDER BY comments.created_at DESC";
     return $this->db->query($query)->result_array();
   }
 
@@ -52,8 +53,8 @@ class Admin_model extends CI_Model{
 
   public function m_list_of_eng_newforms(){
     $query = "SELECT * FROM engineers
-              WHERE engineers.approved=
-              ORDER BY created_at DESC?";
+              WHERE engineers.approved=?
+              ORDER BY created_at DESC";
     return $this->db->query($query, 0)->result_array();
   }
 
