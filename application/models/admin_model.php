@@ -89,9 +89,19 @@ class Admin_model extends CI_Model{
     $this->db->query($query, $id);
   }
 
-  public function m_delete_question($id){
+  // public function m_delete_question($id){
+  //   $query = "DELETE FROM questions WHERE questions.id=?";
+  //   $this->db->query($query, $id);
+  // }
+
+public function m_delete_question($id){
     $query = "DELETE FROM questions WHERE questions.id=?";
     $this->db->query($query, $id);
+    $query1 = "DELETE FROM answers WHERE answers.question_id=?";
+    $answer_id = "SELECT id FROM answers WHERE answers.question_id=$id";
+    $this->db->query($query1, $id);
+    $query2 = "DELETE FROM comments WHERE comments.answer_id=?";
+    $this->db->query($query2, $answer_id);
   }
 
   public function m_delete_answer($id){

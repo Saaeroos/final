@@ -6,7 +6,7 @@
 
     <h2>Edit NGO Profile</h2>
 
-    <form method="POST" action="/user/ngo/profile/update">
+    <form method="POST" action="/user/ngo/profile/update"  enctype="multipart/form-data" accept-charset="utf-8">
       <div class="form-group">
         <label for="form_name">NGO Name:</label>
         <input  name="form_name"   type="text" class="form-control" id="form_name" aria-describedby="nameHelp" placeholder="Enter Name" value="<?php echo set_value('form_name') ?>">

@@ -130,7 +130,7 @@ public function c_add_comment_eng(){
           if ($this->form_validation->run() == FALSE || $upload_picture == FALSE)
           {
                 $this->session->set_flashdata('error', 'invalid data');
-                $this->load->view('users/engineer_register');
+                $this->load->view('users/engineer_update_profile');
           }
           else
           {

@@ -6,7 +6,7 @@
 
     <h2>Edit Engineer Profile</h2>
 
-    <form method="POST" action="/user/engineer/profile/update">
+    <form method="POST" action="/user/engineer/profile/update"  enctype="multipart/form-data" accept-charset="utf-8">
       <div class="form-group">
         <label for="form_name">Name:</label>
         <input  name="form_name"   type="text" class="form-control" id="form_name" aria-describedby="nameHelp" placeholder="Enter Name" value="<?php echo $engineer['name'] ?>">

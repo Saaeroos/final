@@ -11,10 +11,11 @@ if(!empty($flash_error)) {
   $errors .= "<li>{$flash_error}</li>";
 }
 
-$uploads_errors = $this->upload->display_errors('<li>', '</li>');
-if(!empty($_POST) && !empty($uploads_errors)) {
-  $errors .= $uploads_errors;
-}
+// disable upload errors for presenation/...
+// $uploads_errors = $this->upload->display_errors('<li>', '</li>');
+// if(!empty($_POST) && !empty($uploads_errors)) {
+//   $errors .= $uploads_errors;
+// }
 
 if ( $errors ) { ?>
 <ul class="list-unstyled alert alert-danger">

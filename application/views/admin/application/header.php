@@ -1,9 +1,4 @@
-<style type="text/css">
 
-  header {
-    margin-top: 100px;
-  }
-</style>
 
 
 <header>

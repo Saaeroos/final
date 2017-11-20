@@ -130,12 +130,16 @@ class Ngo_c extends CI_Controller{
     $this->form_validation->set_rules('form_password','Password','required|trim|min_length[7]');
     $this->form_validation->set_rules('form_con_password','password Confirmation', 'trim|required|matches[form_password]');
 
-        if ($this->form_validation->run() == FALSE)
+
+        $upload_picture = $this->upload->do_upload('form_photo');
+        if ($this->form_validation->run() == FALSE || $upload_picture == FALSE)
         {
           $this->load->view('users/ngo_update_profile');
         }
         else
         {
+          $photo = $this->upload->data();
+
           $data = array(
     				'c_name'              => $this->input->post('form_name',true),
     				'c_contact_person'    => $this->input->post('form_contact_person',true),
@@ -144,7 +148,9 @@ class Ngo_c extends CI_Controller{
     				'c_website'           => $this->input->post('form_website',true),
             'c_username'          => $this->input->post('form_username',true),
             'c_password'          => $this->input->post('form_password',true),
+            'c_photo'             => $photo['file_name'],
             'id'                  => $this->session->currentUser['id'],
+
             );
 
             $this->load->model('Ngo_model');
